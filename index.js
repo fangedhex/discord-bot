@@ -1,0 +1,81 @@
+/*
+* Discord BOT that show Steam news for games
+*/
+
+// Loading .env
+require('dotenv').config()
+const getenv = require("getenv")
+
+const DISCORD_API_KEY = getenv("DISCORD_API_KEY")
+const DISCORD_CHANNEL_ID = "475991437822001162"
+
+const debug = require("debug")("bot")
+
+// Import the discord.js module
+const
+{
+	Client,
+	RichEmbed
+} = require('discord.js')
+// Create an instance of a Discord client
+const client = new Client();
+
+const steamProvider = require("./providers/steam")
+const providers = [
+	steamProvider("CSGO", 730),
+	steamProvider("Space Engineers", 244850),
+	steamProvider("No Man's Sky", 275850),
+	steamProvider("Rocket League", 252950),
+	steamProvider("Eco", 382310)
+]
+
+function doStuff()
+{
+	// Finding the correct channel
+	let channel = client.channels.find(c => c.id === DISCORD_CHANNEL_ID)
+
+	// Removing all messages
+	channel.fetchMessages(
+	{
+		limit: 100
+	}).then((messages) =>
+	{
+		channel.bulkDelete(messages)
+	})
+	debug("Messages has been deleted from channel")
+
+	providers.forEach((provider) => {
+		provider().then((data) => {
+			let msg = new RichEmbed
+			msg.setTitle(data.title)
+			msg.setDescription(data.content)
+			channel.send(msg)
+			debug(`Sending RichEmbed ${data.title} to Discord`)
+		})
+		.catch((err) => {
+			debug(err)
+		})
+	})
+}
+
+const CronJob = require("cron").CronJob
+
+/**
+ * The ready event is vital, it means that only _after_ this will your bot start reacting to information
+ * received from Discord
+ */
+client.on('ready', () =>
+{	
+	let cronJob = new CronJob("0 0 8 * * *", () => {
+		doStuff()
+		let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+		debug("Waiting until " + next + "(UTC)");
+	})
+
+	let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+	debug("Waiting until " + next + "(UTC)");
+	cronJob.start()
+});
+
+// Log our bot in using the token from https://discordapp.com/developers/applications/me
+client.login(DISCORD_API_KEY);
