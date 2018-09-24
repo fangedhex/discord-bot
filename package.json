@@ -19,6 +19,7 @@
     "dotenv": "^6.0.0",
     "getenv": "^0.7.0",
     "moment": "^2.22.2",
+    "newsapi": "^2.4.0",
     "steamapi": "^2.0.2"
   },
   "devDependencies": {

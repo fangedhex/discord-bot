@@ -9,22 +9,24 @@ import getenv = require("getenv")
 const DISCORD_API_KEY = getenv("DISCORD_API_KEY")
 const DISCORD_CHANNEL_ID = "475991437822001162"
 
-const debug = require("debug")("bot")
+const debug = require("debug")("bot:kernel")
 
 // Import the discord.js module
 import { Client, RichEmbed, TextChannel } from 'discord.js'
 // Create an instance of a Discord client
 const client = new Client();
 
-import { Provider } from "./providers/provider";
+import { Provider } from "./providers/provider"
 
-import { steamProvider } from "./providers/steam";
+import { steamProvider } from "./providers/steam"
+import { getLatestNews } from "./providers/newsapi"
 const providers: Array<Provider> = [
 	steamProvider("CSGO", 730),
 	steamProvider("Space Engineers", 244850),
 	steamProvider("No Man's Sky", 275850),
 	steamProvider("Rocket League", 252950),
-	steamProvider("Eco", 382310)
+	steamProvider("Eco", 382310),
+	getLatestNews()
 ]
 
 function doStuff()

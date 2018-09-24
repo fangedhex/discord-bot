@@ -6,7 +6,7 @@ const STEAM_API_KEY = getenv("STEAM_API_KEY")
 import SteamAPI = require("steamapi")
 let steam = new SteamAPI(STEAM_API_KEY)
 
-const debug = require("debug")("steamapi")
+const debug = require("debug")("bot:steamapi")
 import * as moment from "moment"
 
 import { Provider, Article } from "./provider";
