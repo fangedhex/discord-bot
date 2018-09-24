@@ -1,4 +1,6 @@
 deploy:
   stage: deploy
   script:
-    - docker build -t discordbot
+    - docker build -t discordbot .
+  only:
+    - master
