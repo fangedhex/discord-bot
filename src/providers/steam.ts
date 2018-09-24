@@ -1,18 +1,23 @@
 const MAX_NEWS = 3
 
-const getenv = require("getenv")
+import getenv = require("getenv")
 const STEAM_API_KEY = getenv("STEAM_API_KEY")
 
-const SteamAPI = require("steamapi")
+import * as SteamAPI from "steamapi"
 let steam = new SteamAPI(STEAM_API_KEY)
 
-const debug = require("debug")("steam-provider")
-const moment = require("moment")
+const debug = require("debug")("steamapi")
+import * as moment from "moment"
 
-module.exports = function(name, id) {
+interface Article {
+    title: string,
+    content: string
+}
+
+export function steamProvider(name: string, id: number) {
     debug(`Creating provider for ${name} (${id})`)
     return () => {
-        return new Promise((done, error) => {
+        return new Promise<Article>((done, error) => {
             debug(`Fetching news for ${name} through Steam`)
 
             steam.getGameNews(id).then((data) =>

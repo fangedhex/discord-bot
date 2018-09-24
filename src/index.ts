@@ -4,7 +4,7 @@
 
 // Loading .env
 require('dotenv').config()
-const getenv = require("getenv")
+import getenv = require("getenv")
 
 const DISCORD_API_KEY = getenv("DISCORD_API_KEY")
 const DISCORD_CHANNEL_ID = "475991437822001162"
@@ -20,7 +20,7 @@ const
 // Create an instance of a Discord client
 const client = new Client();
 
-const steamProvider = require("./providers/steam")
+import { steamProvider } from "./providers/steam";
 const providers = [
 	steamProvider("CSGO", 730),
 	steamProvider("Space Engineers", 244850),
