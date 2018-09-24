@@ -1,6 +1,6 @@
 FROM node:alpine
 ADD . /src
+RUN cd /src && npm install && npm run build -- --dist /app && rm -rf /src
 ENV DEBUG=bot,*-provider NODE_ENV=production
-RUN cd /src && npm run build -- --dist /app && rm -rf /src
 WORKDIR /app
 CMD ["node", "index.js"]
