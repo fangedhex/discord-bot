@@ -1,0 +1,4 @@
+deploy:
+  stage: deploy
+  script:
+    - docker build -t discordbot
