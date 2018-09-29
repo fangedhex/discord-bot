@@ -10,6 +10,7 @@ const DISCORD_API_KEY = getenv("DISCORD_API_KEY")
 const DISCORD_CHANNEL_ID = "475991437822001162"
 
 const debug = require("debug")("bot:kernel")
+import * as moment from "moment"
 
 // Import the discord.js module
 import { Client, RichEmbed, TextChannel } from 'discord.js'
@@ -68,14 +69,20 @@ client.on('ready', () =>
 {	
 	let cronJob = new CronJob("0 0 8 * * *", () => {
 		doStuff()
-		let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-		debug("Waiting until " + next + "(UTC)");
-	})
+		let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '')
+		debug("Waiting until " + next + "(UTC)")
+	}, null, true, "Europe/Paris")
 
-	let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-	debug("Waiting until " + next + "(UTC)");
-	cronJob.start()
+	let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '')
+	debug("Waiting until " + next + "(UTC)")
 });
+
+client.on('message', (message) => {
+	if(message.content === "$reload_news") {
+		message.delete()
+		doStuff()
+	}
+})
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
 client.login(DISCORD_API_KEY);

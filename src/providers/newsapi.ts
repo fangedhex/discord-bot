@@ -14,7 +14,7 @@ export function getLatestNews(): Provider {
         return new Promise<Article>((done, error) => {
             debug("Grabbing latest top news from NewsAPI")
             if(NEWSAPI_KEY != "") {
-                newsapi.topHeadlines({
+                newsapi.v2.topHeadlines({
                     country: "fr",
                     category: "technology"
                 }).then((response => {
