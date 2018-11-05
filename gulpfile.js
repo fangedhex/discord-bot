@@ -15,4 +15,4 @@ gulp.task('ts_build', () => {
     return gulp.src('src/**/*.ts').pipe(tsProject()).pipe(gulp.dest(DIST_DIR))
 })
 
-gulp.task('default', ['install', 'ts_build'])
+gulp.task('default', gulp.series('install', 'ts_build'))
