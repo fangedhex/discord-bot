@@ -4,7 +4,7 @@ import {TextChannel} from "discord.js";
 
 module.exports = class Purge extends Command
 {
-    constructor(private client: CommandoClient)
+    constructor(client: CommandoClient)
     {
         super(client, {
             name: "purge",
@@ -18,7 +18,7 @@ module.exports = class Purge extends Command
     // @ts-ignore
     public async run(msg: CommandMessage) {
         // Finding the correct channel
-        let channel = this.client.channels.find(c => c.id === "473967971908452382") as TextChannel;
+        let channel = msg.client.channels.find(c => c.id === "473967971908452382") as TextChannel;
 
         // Removing all messages
         channel.fetchMessages(
