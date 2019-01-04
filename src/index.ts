@@ -13,89 +13,89 @@ const debug = require("debug")("bot:kernel");
 
 // Import the discord.js module
 import {Command, CommandMessage, CommandoClient} from 'discord.js-commando'
-import { RichEmbed, TextChannel } from 'discord.js'
+import {RichEmbed, TextChannel} from 'discord.js'
 // Create an instance of a Discord client
 const client = new CommandoClient({
-	owner: "176651016660451328",
-	commandPrefix: "$"
+    owner: "176651016660451328",
+    commandPrefix: "$"
 });
 
-client.registry.registerDefaultCommands({
-	help: true,
-	eval_: false,
-	prefix: false,
-	commandState: false,
-	ping: false
-});
 const path = require("path");
-client.registry.registerCommandsIn(path.join(__dirname, "commands"));
+client.registry.registerDefaultTypes()
+    .registerDefaultGroups()
+    .registerDefaultCommands({
+        help: true,
+        eval_: false,
+        prefix: false,
+        commandState: false,
+        ping: false
+    })
+    .registerCommandsIn(path.join(__dirname, "commands"));
 
-import { Provider } from "./providers/provider"
+import {Provider} from "./providers/provider"
 
-import { steamProvider } from "./providers/steam"
-import { getLatestNews } from "./providers/newsapi"
+import {steamProvider} from "./providers/steam"
+import {getLatestNews} from "./providers/newsapi"
+
 const providers: Array<Provider> = [
-	steamProvider("CSGO", 730),
-	steamProvider("Space Engineers", 244850),
-	steamProvider("No Man's Sky", 275850),
-	steamProvider("Rocket League", 252950),
-	steamProvider("Eco", 382310),
-	getLatestNews()
+    steamProvider("CSGO", 730),
+    steamProvider("Space Engineers", 244850),
+    steamProvider("No Man's Sky", 275850),
+    steamProvider("Rocket League", 252950),
+    steamProvider("Eco", 382310),
+    getLatestNews()
 ]
 
-export function doStuff()
-{
-	// Finding the correct channel
-	let channel = client.channels.find(c => c.id === DISCORD_CHANNEL_ID) as TextChannel;
+export function doStuff() {
+    // Finding the correct channel
+    let channel = client.channels.find(c => c.id === DISCORD_CHANNEL_ID) as TextChannel;
 
-	// Removing all messages
-	channel.fetchMessages(
-	{
-		limit: 100
-	}).then((messages) =>
-	{
-		channel.bulkDelete(messages);
-	});
-	debug("Messages has been deleted from channel");
+    // Removing all messages
+    channel.fetchMessages(
+        {
+            limit: 100
+        }).then((messages) => {
+        channel.bulkDelete(messages);
+    });
+    debug("Messages has been deleted from channel");
 
-	providers.forEach((provider) => {
-		provider().then((data) => {
-			let msg = new RichEmbed;
-			msg.setTitle(data.title);
-			msg.setDescription(data.content);
-			channel.send(msg);
-			debug(`Sending RichEmbed ${data.title} to Discord`);
-		})
-		.catch((err) => {
-			debug(err);
-		})
-	})
+    providers.forEach((provider) => {
+        provider().then((data) => {
+            let msg = new RichEmbed;
+            msg.setTitle(data.title);
+            msg.setDescription(data.content);
+            channel.send(msg);
+            debug(`Sending RichEmbed ${data.title} to Discord`);
+        })
+            .catch((err) => {
+                debug(err);
+            })
+    })
 }
 
-import { CronJob } from "cron"
+import {CronJob} from "cron"
 
 /**
  * The ready event is vital, it means that only _after_ this will your bot start reacting to information
  * received from Discord
  */
-client.on('ready', () =>
-{
-	client.user.setActivity(`${client.commandPrefix}help`).then(() => {
-		debug("Activity has been set !");
-	});
+client.on('ready', () => {
+    client.user.setActivity(`${client.commandPrefix}help`).then(() => {
+        debug("Activity has been set !");
+    });
 
-	let cronJob = new CronJob("0 0 8 * * *", () => {
-		doStuff();
-		let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-		debug("Waiting until " + next + "(UTC)");
-	}, null, true, "Europe/Paris");
+    let cronJob = new CronJob("0 0 8 * * *", () => {
+        doStuff();
+        let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+        debug("Waiting until " + next + "(UTC)");
+    }, null, true, "Europe/Paris");
 
-	let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-	debug("Waiting until " + next + "(UTC)");
+    let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+    debug("Waiting until " + next + "(UTC)");
 });
 
 client.on("commandRun", (command: Command, promise: any, msg: CommandMessage) => {
-	msg.delete(5);
+    msg.delete(5);
 })
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
