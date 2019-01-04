@@ -1,5 +1,5 @@
 import {CommandoClient, Command, CommandMessage} from "discord.js-commando";
-import {doStuff} from "../index";
+import {doStuff} from "../..";
 
 module.exports = class RefreshNews extends Command
 {
@@ -16,7 +16,7 @@ module.exports = class RefreshNews extends Command
 
     // @ts-ignore
     public async run(msg: CommandMessage) {
-        msg.channel.sendMessage("Refreshing news...");
+        await msg.say("Refreshing news...");
         doStuff();
     }
 };

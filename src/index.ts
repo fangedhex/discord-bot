@@ -12,16 +12,15 @@ const DISCORD_CHANNEL_ID = "475991437822001162";
 const debug = require("debug")("bot:kernel");
 
 // Import the discord.js module
-import { CommandoClient } from 'discord.js-commando'
+import {Command, CommandMessage, CommandoClient} from 'discord.js-commando'
 import { RichEmbed, TextChannel } from 'discord.js'
 // Create an instance of a Discord client
 const client = new CommandoClient({
-	owner: "176651016660451328"
+	owner: "176651016660451328",
+	commandPrefix: "$"
 });
 
-// Commands loader
-client.commandPrefix = "$";
-
+client.registry.registerDefaults();
 const path = require("path");
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
 
@@ -88,6 +87,10 @@ client.on('ready', () =>
 	let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
 	debug("Waiting until " + next + "(UTC)");
 });
+
+client.on("commandRun", (command: Command, promise: any, msg: CommandMessage) => {
+	msg.delete(5);
+})
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
 client.login(DISCORD_API_KEY);
