@@ -13,24 +13,16 @@ const debug = require("debug")("bot:kernel");
 
 // Import the discord.js module
 import {Command, CommandMessage, CommandoClient} from 'discord.js-commando'
-import {RichEmbed, TextChannel} from 'discord.js'
+import {Emoji, Message, ReactionEmoji, RichEmbed, TextChannel} from 'discord.js'
 // Create an instance of a Discord client
 const client = new CommandoClient({
     owner: "176651016660451328",
-    commandPrefix: "$"
+    commandPrefix: "$",
+    disableEveryone: true
 });
 
 const path = require("path");
-client.registry.registerDefaultTypes()
-    .registerDefaultGroups()
-    .registerDefaultCommands({
-        help: true,
-        eval_: false,
-        prefix: false,
-        commandState: false,
-        ping: false
-    })
-    .registerCommandsIn(path.join(__dirname, "commands"));
+const COMMANDS_PATH = path.join(__dirname, "commands");
 
 import {Provider} from "./providers/provider"
 
@@ -84,6 +76,18 @@ client.on('ready', () => {
         debug("Activity has been set !");
     });
 
+    client.registry.registerDefaultTypes()
+        .registerDefaultGroups()
+        .registerDefaultCommands({
+            help: true,
+            eval_: false,
+            prefix: false,
+            commandState: false,
+            ping: false
+        })
+        .registerCommandsIn(COMMANDS_PATH);
+    debug(`Commands loaded from ${COMMANDS_PATH}`);
+
     let cronJob = new CronJob("0 0 8 * * *", () => {
         doStuff();
         let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
@@ -94,9 +98,15 @@ client.on('ready', () => {
     debug("Waiting until " + next + "(UTC)");
 });
 
-client.on("commandRun", (command: Command, promise: any, msg: CommandMessage) => {
-    msg.delete(5);
-})
+client.on("commandRegister", (cmd: Command) => {
+    debug("Registering command : " + cmd.name);
+});
+
+const emojis = require("node-emoji");
+
+client.on("commandRun",  (command: Command, promise: Promise<Message>, msg: CommandMessage) => {
+    msg.react(emojis.random().emoji);
+});
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
 client.login(DISCORD_API_KEY);

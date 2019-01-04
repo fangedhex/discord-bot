@@ -15,8 +15,8 @@ module.exports = class RefreshNews extends Command
     }
 
     // @ts-ignore
-    public async run(msg: CommandMessage) {
-        await msg.say("Refreshing news...");
+    public run(msg: CommandMessage) {
         doStuff();
+        return msg.reply("Refreshing news ...");
     }
 };

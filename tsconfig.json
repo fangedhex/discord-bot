@@ -1,5 +1,10 @@
 {
+    "include": [
+        "src/**/*.ts"
+    ],
     "compilerOptions": {
+        "outDir": "dist",
+        "sourceMap": true,
         "target": "es6",
         "module": "commonjs",
         "lib": [

@@ -12,8 +12,7 @@ module.exports = class Purge extends Command {
         });
     }
 
-    // @ts-ignore
-    public async run(msg: CommandMessage) {
+    public run(msg: CommandMessage) {
         // Finding the correct channel
         let channel = msg.client.channels.find(c => c.id === "473967971908452382") as TextChannel;
 
@@ -23,9 +22,11 @@ module.exports = class Purge extends Command {
                 limit: 100
             })
             .then((messages: Collection<string, Message>) => {
-                messages.forEach(async (message) => {
-                    await message.delete(5);
+                messages.forEach((message) => {
+                    message.delete();
                 });
             });
+
+        return msg.reply("Nuking #bot channel !");
     }
 };
