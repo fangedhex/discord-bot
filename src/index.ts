@@ -105,7 +105,7 @@ client.on("commandRegister", (cmd: Command) => {
 const emojis = require("node-emoji");
 
 client.on("commandRun",  (command: Command, promise: Promise<Message>, msg: CommandMessage) => {
-    msg.react(emojis.random().emoji);
+    msg.delete();
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me

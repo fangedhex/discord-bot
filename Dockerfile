@@ -1,4 +1,5 @@
 FROM node:alpine
+RUN apk add --no-cache ffmpeg
 ADD . /src
 RUN cd /src && npm install && npm run build -- --dist /app && rm -rf /src
 ENV DEBUG=bot:* NODE_ENV=production
