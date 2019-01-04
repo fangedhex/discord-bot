@@ -20,8 +20,10 @@ const client = new CommandoClient({
 });
 
 // Commands loader
-client.commandPrefix = "!";
-client.registry.registerDefaults();
+client.commandPrefix = "$";
+
+const path = require("path");
+client.registry.registerCommandsIn(path.join(__dirname, "commands"));
 
 import { Provider } from "./providers/provider"
 
@@ -36,7 +38,7 @@ const providers: Array<Provider> = [
 	getLatestNews()
 ]
 
-function doStuff()
+export function doStuff()
 {
 	// Finding the correct channel
 	let channel = client.channels.find(c => c.id === DISCORD_CHANNEL_ID) as TextChannel;
@@ -73,7 +75,7 @@ import { CronJob } from "cron"
  */
 client.on('ready', () =>
 {
-	client.user.setActivity("!help").then(() => {
+	client.user.setActivity(`${client.commandPrefix}help`).then(() => {
 		debug("Activity has been set !");
 	});
 
@@ -85,13 +87,6 @@ client.on('ready', () =>
 
 	let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
 	debug("Waiting until " + next + "(UTC)");
-});
-
-client.on('message', (message) => {
-	if(message.content === "$reload_news") {
-		message.delete();
-		doStuff();
-	}
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
