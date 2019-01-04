@@ -1,6 +1,12 @@
+image: docker:latest
+
+services:
+    - docker:dind
+
 deploy:
-  stage: deploy
-  script:
-    - docker build -t discordbot .
-  only:
-    - master
+    stage: deploy
+    script:
+        - docker build -t docker.sylvainviste.com/discordbot .
+        - docker push docker.sylvainviste.com/discordbot
+    only:
+        - master
