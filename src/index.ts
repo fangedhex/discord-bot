@@ -20,7 +20,13 @@ const client = new CommandoClient({
 	commandPrefix: "$"
 });
 
-client.registry.registerDefaults();
+client.registry.registerDefaultCommands({
+	help: true,
+	eval_: false,
+	prefix: false,
+	commandState: false,
+	ping: false
+});
 const path = require("path");
 client.registry.registerCommandsIn(path.join(__dirname, "commands"));
 
