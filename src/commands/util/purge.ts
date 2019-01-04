@@ -9,7 +9,7 @@ module.exports = class Purge extends Command
         super(client, {
             name: "purge",
             group: "util",
-            memberName: "channel",
+            memberName: "purge",
             description: "Remove all messages inside the bot channel",
             guildOnly: true
         });

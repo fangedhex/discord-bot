@@ -8,7 +8,7 @@ module.exports = class RefreshNews extends Command
         super(client, {
             name: "refresh-news",
             group: "util",
-            memberName: "channel",
+            memberName: "refresh-news",
             description: "Refresh news",
             guildOnly: true
         });
