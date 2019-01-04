@@ -2,7 +2,7 @@ import {CommandoClient, Command, CommandMessage} from "discord.js-commando";
 import {doStuff} from "../..";
 import {TextChannel} from "discord.js";
 
-module.exports = class RefreshNews extends Command
+module.exports = class Purge extends Command
 {
     constructor(private client: CommandoClient)
     {
