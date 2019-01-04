@@ -1,11 +1,8 @@
 import {CommandoClient, Command, CommandMessage} from "discord.js-commando";
-import {doStuff} from "../..";
-import {TextChannel} from "discord.js";
+import {Collection, Message, TextChannel} from "discord.js";
 
-module.exports = class Purge extends Command
-{
-    constructor(client: CommandoClient)
-    {
+module.exports = class Purge extends Command {
+    constructor(client: CommandoClient) {
         super(client, {
             name: "purge",
             group: "util",
@@ -24,9 +21,11 @@ module.exports = class Purge extends Command
         channel.fetchMessages(
             {
                 limit: 100
-            }).then((messages) =>
-        {
-            channel.bulkDelete(messages);
-        });
+            })
+            .then((messages: Collection<string, Message>) => {
+                messages.forEach(async (message) => {
+                    await message.delete(5);
+                });
+            });
     }
 };
