@@ -6,7 +6,6 @@ services:
 deploy:
     stage: deploy
     script:
-        - npm run lint
         - docker build -t docker.sylvainviste.com/discordbot .
         - docker push docker.sylvainviste.com/discordbot
     only:
