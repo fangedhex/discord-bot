@@ -1,41 +1,43 @@
-import { Provider, Article } from "./provider"
-import NewsAPI = require("newsapi")
-import getenv = require("getenv")
-const debug = require("debug")("bot:newsapi")
-import * as moment from "moment"
+import getenv = require("getenv");
+import moment = require("moment");
+import NewsAPI = require("newsapi");
+import { IArticle, IProvider } from "./provider";
 
-let MAX_NEWS = 3
+import Debugger = require("debug");
+const debug = Debugger("bot:newsapi");
 
-let NEWSAPI_KEY = getenv("NEWSAPI_KEY")
-let newsapi = new NewsAPI(NEWSAPI_KEY)
+const MAX_NEWS = 3;
 
-export function getLatestNews(): Provider {
-    return () => {        
-        return new Promise<Article>((done, error) => {
-            debug("Grabbing latest top news from NewsAPI")
-            if(NEWSAPI_KEY != "") {
+const NEWSAPI_KEY = getenv("NEWSAPI_KEY");
+const newsapi = new NewsAPI(NEWSAPI_KEY);
+
+export function getLatestNews(): IProvider {
+    return () => {
+        return new Promise<IArticle>((done, error) => {
+            debug("Grabbing latest top news from NewsAPI");
+            if (NEWSAPI_KEY !== "") {
                 newsapi.v2.topHeadlines({
                     country: "fr",
-                    category: "technology"
-                }).then((response => {
-                    if(response.status === "ok") {
-                        let data = response.articles
-    
-                        let content = ''
+                    category: "technology",
+                }).then(((response) => {
+                    if (response.status === "ok") {
+                        const data = response.articles;
+
+                        let content = "";
                         for (let i = 0; i < MAX_NEWS && i < data.length; i++)
                         {
-                            let date = moment(data[i].publishedAt).format("DD/MM/YYYY HH:mm")
-                            content += `[${data[i].title}](${data[i].url})\n${date}\n\n`
+                            const date = moment(data[i].publishedAt).format("DD/MM/YYYY HH:mm");
+                            content += `[${data[i].title}](${data[i].url})\n${date}\n\n`;
                         }
-    
-                        done({title: "Newspaper", content})
+
+                        done({title: "Newspaper", content} as IArticle);
                     }else{
-                        error("Cannot get NewsAPI data")
-                    }                
-                })).catch(err => error(err))
+                        error("Cannot get NewsAPI data");
+                    }
+                })).catch((err) => error(err));
             }else{
-                error("NewsAPI key is not given.")
-            }            
-        }) 
-    }     
+                error("NewsAPI key is not given.");
+            }
+        });
+    };
 }

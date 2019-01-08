@@ -3,49 +3,51 @@
 */
 
 // Loading .env
-require('dotenv').config();
+import dotenv = require("dotenv");
+dotenv.config();
 import getenv = require("getenv");
 
 const DISCORD_API_KEY = getenv("DISCORD_API_KEY");
 const DISCORD_CHANNEL_ID = "475991437822001162";
 
-const debug = require("debug")("bot:kernel");
+import Debugger = require("debug");
+const debug = Debugger("bot:kernel");
 
 // Import the discord.js module
-import {Command, CommandMessage, CommandoClient} from 'discord.js-commando'
-import {Emoji, Message, ReactionEmoji, RichEmbed, TextChannel} from 'discord.js'
+import { Emoji, Message, ReactionEmoji, RichEmbed, TextChannel } from "discord.js";
+import { Command, CommandMessage, CommandoClient } from "discord.js-commando";
 // Create an instance of a Discord client
 const client = new CommandoClient({
     owner: "176651016660451328",
     commandPrefix: "$",
-    disableEveryone: true
+    disableEveryone: true,
 });
 
-const path = require("path");
+import path = require("path");
 const COMMANDS_PATH = path.join(__dirname, "commands");
 
-import {Provider} from "./providers/provider"
+import { IProvider } from "./providers/provider";
 
-import {steamProvider} from "./providers/steam"
-import {getLatestNews} from "./providers/newsapi"
+import { getLatestNews } from "./providers/newsapi";
+import { steamProvider } from "./providers/steam";
 
-const providers: Array<Provider> = [
+const providers: IProvider[] = [
     steamProvider("CSGO", 730),
     steamProvider("Space Engineers", 244850),
     steamProvider("No Man's Sky", 275850),
     steamProvider("Rocket League", 252950),
     steamProvider("Eco", 382310),
-    getLatestNews()
-]
+    getLatestNews(),
+];
 
 export function doStuff() {
     // Finding the correct channel
-    let channel = client.channels.find(c => c.id === DISCORD_CHANNEL_ID) as TextChannel;
+    const channel = client.channels.find((c) => c.id === DISCORD_CHANNEL_ID) as TextChannel;
 
     // Removing all messages
     channel.fetchMessages(
         {
-            limit: 100
+            limit: 100,
         }).then((messages) => {
         channel.bulkDelete(messages);
     });
@@ -53,7 +55,7 @@ export function doStuff() {
 
     providers.forEach((provider) => {
         provider().then((data) => {
-            let msg = new RichEmbed;
+            const msg = new RichEmbed();
             msg.setTitle(data.title);
             msg.setDescription(data.content);
             channel.send(msg);
@@ -61,17 +63,17 @@ export function doStuff() {
         })
             .catch((err) => {
                 debug(err);
-            })
-    })
+            });
+    });
 }
 
-import {CronJob} from "cron"
+import {CronJob} from "cron";
 
 /**
  * The ready event is vital, it means that only _after_ this will your bot start reacting to information
  * received from Discord
  */
-client.on('ready', () => {
+client.on("ready", () => {
     client.user.setActivity(`${client.commandPrefix}help`).then(() => {
         debug("Activity has been set !");
     });
@@ -83,18 +85,18 @@ client.on('ready', () => {
             eval_: false,
             prefix: false,
             commandState: false,
-            ping: false
+            ping: false,
         })
         .registerCommandsIn(COMMANDS_PATH);
     debug(`Commands loaded from ${COMMANDS_PATH}`);
 
-    let cronJob = new CronJob("0 0 8 * * *", () => {
+    const cronJob = new CronJob("0 0 8 * * *", () => {
         doStuff();
-        let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-        debug("Waiting until " + next + "(UTC)");
+        const nextTime = cronJob.nextDates().toISOString().replace(/T/, " ").replace(/\..+/, "");
+        debug("Waiting until " + nextTime + "(UTC)");
     }, null, true, "Europe/Paris");
 
-    let next = cronJob.nextDates().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+    const next = cronJob.nextDates().toISOString().replace(/T/, " ").replace(/\..+/, "");
     debug("Waiting until " + next + "(UTC)");
 });
 
@@ -102,7 +104,7 @@ client.on("commandRegister", (cmd: Command) => {
     debug("Registering command : " + cmd.name);
 });
 
-const emojis = require("node-emoji");
+import emojis = require("node-emoji");
 
 client.on("commandRun",  (command: Command, promise: Promise<Message>, msg: CommandMessage) => {
     msg.delete();

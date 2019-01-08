@@ -1,5 +1,5 @@
-import {CommandoClient, Command, CommandMessage} from "discord.js-commando";
-import {Collection, Message, TextChannel} from "discord.js";
+import {Channel, Collection, Message, TextChannel} from "discord.js";
+import {Command, CommandMessage, CommandoClient} from "discord.js-commando";
 
 module.exports = class Purge extends Command {
     constructor(client: CommandoClient) {
@@ -8,18 +8,18 @@ module.exports = class Purge extends Command {
             group: "util",
             memberName: "purge",
             description: "Remove all messages inside the bot channel",
-            guildOnly: true
+            guildOnly: true,
         });
     }
 
     public run(msg: CommandMessage) {
         // Finding the correct channel
-        let channel = msg.client.channels.find(c => c.id === "473967971908452382") as TextChannel;
+        const channel = msg.client.channels.find((c: Channel) => c.id === "473967971908452382") as TextChannel;
 
         // Removing all messages
         channel.fetchMessages(
             {
-                limit: 100
+                limit: 100,
             })
             .then((messages: Collection<string, Message>) => {
                 messages.forEach((message) => {
