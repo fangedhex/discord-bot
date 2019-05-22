@@ -1,4 +1,4 @@
-import {VoiceConnection} from "discord.js";
+import { VoiceConnection } from "discord.js";
 import {Command, CommandMessage, CommandoClient} from "discord.js-commando";
 import youtubeStream = require("youtube-audio-stream");
 
@@ -21,8 +21,7 @@ export default class Youtube extends Command {
         });
     }
 
-    // @ts-ignore
-    public run(msg: CommandMessage, params: {url: string}) {
+    public async run(msg: CommandMessage, params: {url: string}) {
         const stream = youtubeStream(params.url);
 
         if (stream)
@@ -34,5 +33,7 @@ export default class Youtube extends Command {
                 });
             });
         }
+
+        return msg.reply(":o");
     }
 }

@@ -23,9 +23,6 @@ const client = new CommandoClient({
     disableEveryone: true,
 });
 
-import path = require("path");
-const COMMANDS_PATH = path.join(__dirname, "commands");
-
 import { IProvider } from "./providers/provider";
 
 import { getLatestNews } from "./providers/newsapi";
@@ -68,6 +65,7 @@ export function doStuff() {
 }
 
 import {CronJob} from "cron";
+import Commands from "./commands";
 
 /**
  * The ready event is vital, it means that only _after_ this will your bot start reacting to information
@@ -87,8 +85,7 @@ client.on("ready", () => {
             commandState: false,
             ping: false,
         })
-        .registerCommandsIn(COMMANDS_PATH);
-    debug(`Commands loaded from ${COMMANDS_PATH}`);
+        .registerCommands(Commands);
 
     const cronJob = new CronJob("0 0 8 * * *", () => {
         doStuff();
@@ -103,8 +100,6 @@ client.on("ready", () => {
 client.on("commandRegister", (cmd: Command) => {
     debug("Registering command : " + cmd.name);
 });
-
-import emojis = require("node-emoji");
 
 client.on("commandRun",  (command: Command, promise: Promise<Message>, msg: CommandMessage) => {
     msg.delete();

@@ -1,7 +1,7 @@
 import {Channel, Collection, Message, TextChannel} from "discord.js";
 import {Command, CommandMessage, CommandoClient} from "discord.js-commando";
 
-module.exports = class Purge extends Command {
+export default class Purge extends Command {
     constructor(client: CommandoClient) {
         super(client, {
             name: "purge",

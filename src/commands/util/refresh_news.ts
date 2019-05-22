@@ -1,7 +1,7 @@
 import {Command, CommandMessage, CommandoClient} from "discord.js-commando";
 import {doStuff} from "../..";
 
-module.exports = class RefreshNews extends Command
+export default class RefreshNews extends Command
 {
     constructor(client: CommandoClient)
     {
