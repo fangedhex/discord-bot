@@ -14,13 +14,22 @@ import Debugger = require("debug");
 const debug = Debugger("bot:kernel");
 
 // Import the discord.js module
-import { Emoji, Message, ReactionEmoji, RichEmbed, TextChannel } from "discord.js";
+import {
+  CategoryChannel,
+  ChannelCreationOverwrites,
+  Emoji,
+  Message,
+  ReactionEmoji,
+  RichEmbed,
+  TextChannel,
+  VoiceChannel
+} from "discord.js";
 import { Command, CommandMessage, CommandoClient } from "discord.js-commando";
 // Create an instance of a Discord client
 const client = new CommandoClient({
-    owner: "176651016660451328",
-    commandPrefix: "$",
-    disableEveryone: true,
+  owner: "176651016660451328",
+  commandPrefix: "$",
+  disableEveryone: true,
 });
 
 import { IProvider } from "./providers/provider";
@@ -29,39 +38,39 @@ import { getLatestNews } from "./providers/newsapi";
 import { steamProvider } from "./providers/steam";
 
 const providers: IProvider[] = [
-    steamProvider("CSGO", 730),
-    steamProvider("Space Engineers", 244850),
-    steamProvider("No Man's Sky", 275850),
-    steamProvider("Rocket League", 252950),
-    steamProvider("Eco", 382310),
-    getLatestNews(),
+  steamProvider("CSGO", 730),
+  steamProvider("Space Engineers", 244850),
+  steamProvider("No Man's Sky", 275850),
+  steamProvider("Rocket League", 252950),
+  steamProvider("Eco", 382310),
+  getLatestNews(),
 ];
 
 export function doStuff() {
-    // Finding the correct channel
-    const channel = client.channels.find((c) => c.id === DISCORD_CHANNEL_ID) as TextChannel;
+  // Finding the correct channel
+  const channel = client.channels.find((c) => c.id === DISCORD_CHANNEL_ID) as TextChannel;
 
-    // Removing all messages
-    channel.fetchMessages(
-        {
-            limit: 100,
-        }).then((messages) => {
-        channel.bulkDelete(messages);
-    });
-    debug("Messages has been deleted from channel");
+  // Removing all messages
+  channel.fetchMessages(
+    {
+      limit: 100,
+    }).then((messages) => {
+    channel.bulkDelete(messages);
+  });
+  debug("Messages has been deleted from channel");
 
-    providers.forEach((provider) => {
-        provider().then((data) => {
-            const msg = new RichEmbed();
-            msg.setTitle(data.title);
-            msg.setDescription(data.content);
-            channel.send(msg);
-            debug(`Sending RichEmbed ${data.title} to Discord`);
-        })
-            .catch((err) => {
-                debug(err);
-            });
+  providers.forEach((provider) => {
+    provider().then((data) => {
+      const msg = new RichEmbed();
+      msg.setTitle(data.title);
+      msg.setDescription(data.content);
+      channel.send(msg);
+      debug(`Sending RichEmbed ${data.title} to Discord`);
+    })
+    .catch((err) => {
+      debug(err);
     });
+  });
 }
 
 import {CronJob} from "cron";
@@ -72,37 +81,70 @@ import Commands from "./commands";
  * received from Discord
  */
 client.on("ready", () => {
-    client.user.setActivity(`${client.commandPrefix}help`).then(() => {
-        debug("Activity has been set !");
-    });
+  client.user.setActivity(`${client.commandPrefix}help`).then(() => {
+    debug("Activity has been set !");
+  });
 
-    client.registry.registerDefaultTypes()
-        .registerDefaultGroups()
-        .registerDefaultCommands({
-            help: true,
-            eval_: false,
-            prefix: false,
-            commandState: false,
-            ping: false,
-        })
-        .registerCommands(Commands);
+  client.registry.registerDefaultTypes()
+  .registerDefaultGroups()
+  .registerDefaultCommands({
+    help: true,
+    eval_: false,
+    prefix: false,
+    commandState: false,
+    ping: false,
+  })
+  .registerCommands(Commands);
 
-    const cronJob = new CronJob("0 0 8 * * *", () => {
-        doStuff();
-        const nextTime = cronJob.nextDates().toISOString().replace(/T/, " ").replace(/\..+/, "");
-        debug("Waiting until " + nextTime + "(UTC)");
-    }, null, true, "Europe/Paris");
+  const cronJob = new CronJob("0 0 8 * * *", () => {
+    doStuff();
+    const nextTime = cronJob.nextDates().toISOString().replace(/T/, " ").replace(/\..+/, "");
+    debug("Waiting until " + nextTime + "(UTC)");
+  }, null, true, "Europe/Paris");
 
-    const next = cronJob.nextDates().toISOString().replace(/T/, " ").replace(/\..+/, "");
-    debug("Waiting until " + next + "(UTC)");
+  const next = cronJob.nextDates().toISOString().replace(/T/, " ").replace(/\..+/, "");
+  debug("Waiting until " + next + "(UTC)");
+
+  tick();
 });
 
+function tick() {
+  const creator = client.channels.find((c) => c.id === "581791533397704706") as VoiceChannel;
+
+  creator.members.forEach(async (member) => {
+    await creator.guild.createChannel("tmp", {
+      parent: creator.parent,
+      type: "voice",
+      permissionOverwrites: [
+        {
+          allowed: "KICK_MEMBERS",
+          id: member.id,
+        },
+      ],
+    }).then((c) => {
+      c.setName(`Salon de ${member.displayName}`);
+      return member.setVoiceChannel(c);
+    });
+  });
+
+  const category = client.channels.find((c) => c.id === "581790861696827392") as CategoryChannel;
+  category.children.forEach(async (channel) => {
+    if (channel.id !== "581791533397704706" && channel.name !== "tmp") {
+      if ((channel as VoiceChannel).members.size === 0) {
+        await channel.delete().catch(() => debug("Cannot delete temporary channel !"));
+      }
+    }
+  });
+
+  setTimeout(tick, 1000);
+}
+
 client.on("commandRegister", (cmd: Command) => {
-    debug("Registering command : " + cmd.name);
+  debug("Registering command : " + cmd.name);
 });
 
 client.on("commandRun",  (command: Command, promise: Promise<Message>, msg: CommandMessage) => {
-    msg.delete();
+  msg.delete();
 });
 
 // Log our bot in using the token from https://discordapp.com/developers/applications/me

@@ -1,14 +1,18 @@
 {
-    "include": [
-        "src/**/*.ts"
+  "include": [
+    "src/**/*.ts"
+  ],
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "target": "es6",
+    "module": "commonjs",
+    "lib": [
+      "es6"
     ],
-    "compilerOptions": {
-        "outDir": "dist",
-        "sourceMap": true,
-        "target": "es6",
-        "module": "commonjs",
-        "lib": [
-            "es6"
-        ]
-    }
+    "types": [
+      "node"
+    ]
+  }
 }
