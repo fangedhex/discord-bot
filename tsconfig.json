@@ -3,6 +3,7 @@
     "src/**/*.ts"
   ],
   "compilerOptions": {
+    "strict": true,
     "experimentalDecorators": true,
     "outDir": "dist",
     "sourceMap": true,

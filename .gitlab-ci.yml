@@ -3,6 +3,14 @@ image: docker:latest
 services:
     - docker:dind
 
+test:
+    image: node
+    stage: test
+    script:
+        - yarn install
+        - yarn lint
+        - yarn test
+
 deploy:
     stage: deploy
     script:

@@ -1,6 +1,6 @@
-import Purge from "./util/purge";
-import RefreshNews from "./util/refresh_news";
-import Youtube from "./util/youtube";
+import Purge from "./util/Purge";
+import RefreshNews from "./util/RefreshNews";
+import Youtube from "./util/Youtube";
 
 export default [
   Purge,
