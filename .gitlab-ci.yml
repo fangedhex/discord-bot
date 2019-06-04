@@ -1,20 +1,21 @@
 image: docker:latest
 
 services:
-    - docker:dind
+  - docker:dind
 
 test:
-    image: node
-    stage: test
-    script:
-        - yarn install
-        - yarn lint
-        - yarn test
+  image: node
+  stage: test
+  script:
+    - yarn install
+    - yarn lint
+    - yarn test:coverage
+  coverage: /All\sfiles.*?\s+(\d+.\d+)/
 
 deploy:
-    stage: deploy
-    script:
-        - docker build -t docker.sylvainviste.com/discordbot .
-        - docker push docker.sylvainviste.com/discordbot
-    only:
-        - master
+  stage: deploy
+  script:
+    - docker build -t docker.sylvainviste.com/discordbot .
+    - docker push docker.sylvainviste.com/discordbot
+  only:
+    - master
