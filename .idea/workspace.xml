@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cdc69a6-da2f-4da7-94d8-aac99dada1b0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/env.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DiscordBot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiscordBot.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/newsapi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/newsapi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/steam.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/steam.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,16 +79,32 @@
       <workItem from="1559543418321" duration="9911000" />
       <workItem from="1559650453772" duration="2555000" />
     </task>
+    <task id="LOCAL-00001" summary="Updating dependencies">
+      <created>1586880149410</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586880149410</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updating dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updating dependencies" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2338" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586878962982">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2338" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1586878962982" />
+    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2" timestamp="1586880149302">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1586880149302" />
     <state width="1894" height="261" key="GridCell.Tab.0.bottom" timestamp="1586879905344">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

@@ -1,6 +1,6 @@
-import getenv = require("getenv");
 import moment = require("moment");
 import NewsAPI = require("newsapi");
+import { NEWSAPI_KEY } from "../env.config";
 import { IArticle, IProvider } from "./provider";
 
 import Debugger = require("debug");
@@ -8,7 +8,6 @@ const debug = Debugger("bot:newsapi");
 
 const MAX_NEWS = 3;
 
-const NEWSAPI_KEY = getenv("NEWSAPI_KEY");
 const newsapi = new NewsAPI(NEWSAPI_KEY);
 
 export function getLatestNews(): IProvider {
