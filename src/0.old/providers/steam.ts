@@ -1,6 +1,6 @@
 const MAX_NEWS = 3;
 
-import { STEAM_API_KEY } from "../env.config";
+import { STEAM_API_KEY } from "../../env.config";
 
 import SteamAPI = require("steamapi");
 const steam = new SteamAPI(STEAM_API_KEY);

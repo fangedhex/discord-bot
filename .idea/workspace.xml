@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdc69a6-da2f-4da7-94d8-aac99dada1b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/env.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rollup.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bridge/Discord.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/Command.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/IAudio.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/IChat.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/ICommandPayload.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/IMessagePayload.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/MessageHandler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/Module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ioc.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/metadata/User.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/musique/MusiqueModule.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/musique/commands/PlayAudioCommand.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/core/Command.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/core/MessageHandler.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/core/Module.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/modules/musique/commands/PlayAudioCommand.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/setup.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DiscordBot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/DiscordBot.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/providers/newsapi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/newsapi.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/providers/steam.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/steam.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DiscordBot.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands/util/Purge.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands/util/RefreshNews.test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands/util/RefreshNews.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commands/util/Youtube.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/defs.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/defs.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/newsapi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/0.old/providers/newsapi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/provider.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/0.old/providers/provider.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/steam.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/0.old/providers/steam.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +54,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -29,14 +67,15 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="240" />
-    <option name="y" value="130" />
-    <option name="width" value="1440" />
-    <option name="height" value="780" />
-  </component>
+  <component name="ProjectId" id="1aZUx88VZXeyXWKygdRyAk0nArR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -46,10 +85,22 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/jest" />
-    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v12.16.2/bin/node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/core" />
+      <recent name="$PROJECT_DIR$/src/core" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/commands" />
+      <recent name="$PROJECT_DIR$/src/0.old" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -59,6 +110,31 @@
       <scope-kind value="ALL" />
       <method v="2" />
     </configuration>
+    <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Jest.All Tests" />
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.dev" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -78,6 +154,22 @@
       <workItem from="1559494234690" duration="5944000" />
       <workItem from="1559543418321" duration="9911000" />
       <workItem from="1559650453772" duration="2555000" />
+      <workItem from="1586942856694" duration="4133000" />
+      <workItem from="1586961029076" duration="6892000" />
+      <workItem from="1587025754862" duration="972000" />
+      <workItem from="1587026736037" duration="3485000" />
+      <workItem from="1587044778949" duration="2881000" />
+      <workItem from="1587060243363" duration="2882000" />
+      <workItem from="1587063140852" duration="927000" />
+      <workItem from="1587072219611" duration="147000" />
+      <workItem from="1587109882786" duration="6708000" />
+      <workItem from="1587202604709" duration="36000" />
+      <workItem from="1587202654420" duration="7877000" />
+      <workItem from="1587285623775" duration="2854000" />
+      <workItem from="1587289024502" duration="169000" />
+      <workItem from="1587289205562" duration="3365000" />
+      <workItem from="1587315441007" duration="4812000" />
+      <workItem from="1587378004984" duration="14247000" />
     </task>
     <task id="LOCAL-00001" summary="Updating dependencies">
       <created>1586880149410</created>
@@ -86,40 +178,119 @@
       <option name="project" value="LOCAL" />
       <updated>1586880149410</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Using env-var instead of getenv">
+      <created>1586883896468</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586883896468</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updating dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updating dependencies" />
+    <MESSAGE value="Using env-var instead of getenv" />
+    <option name="LAST_COMMIT_MESSAGE" value="Using env-var instead of getenv" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2338" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586878962982">
+    <state x="2338" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587289253725">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2338" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1586878962982" />
-    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2" timestamp="1586880149302">
+    <state x="2338" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587289253725" />
+    <state x="2688" y="243" width="378" height="566" key="#com.intellij.ide.util.MemberChooser" timestamp="1587398270530">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1586880149302" />
-    <state width="1894" height="261" key="GridCell.Tab.0.bottom" timestamp="1586879905344">
+    <state x="2688" y="243" width="378" height="566" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587398270530" />
+    <state x="2608" y="372" width="528" height="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1587392112760">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1894" height="261" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1586879905344" />
-    <state width="1894" height="261" key="GridCell.Tab.0.center" timestamp="1586879905344">
+    <state x="2608" y="372" width="528" height="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587392112760" />
+    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2" timestamp="1586883896381">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1894" height="261" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1586879905344" />
-    <state width="1894" height="261" key="GridCell.Tab.0.left" timestamp="1586879905344">
+    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1586883896381" />
+    <state width="1894" height="754" key="GridCell.Tab.0.bottom" timestamp="1587419768296">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1894" height="261" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1586879905344" />
-    <state width="1894" height="261" key="GridCell.Tab.0.right" timestamp="1586879905344">
+    <state width="1894" height="754" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587419768296" />
+    <state width="1894" height="754" key="GridCell.Tab.0.center" timestamp="1587419768295">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1894" height="261" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1586879905344" />
+    <state width="1894" height="754" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587419768295" />
+    <state width="1894" height="754" key="GridCell.Tab.0.left" timestamp="1587419768295">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="754" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587419768295" />
+    <state width="1894" height="754" key="GridCell.Tab.0.right" timestamp="1587419768296">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="754" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587419768296" />
+    <state width="1894" height="331" key="GridCell.Tab.1.bottom" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state width="1894" height="331" key="GridCell.Tab.1.center" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.1.center/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state width="1894" height="331" key="GridCell.Tab.1.left" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.1.left/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state width="1894" height="331" key="GridCell.Tab.1.right" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.1.right/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state width="1894" height="331" key="GridCell.Tab.2.bottom" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.2.bottom/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state width="1894" height="331" key="GridCell.Tab.2.center" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.2.center/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state width="1894" height="331" key="GridCell.Tab.2.left" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.2.left/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state width="1894" height="331" key="GridCell.Tab.2.right" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.2.right/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state width="1894" height="331" key="GridCell.Tab.3.bottom" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.3.bottom/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state width="1894" height="331" key="GridCell.Tab.3.center" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.3.center/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state width="1894" height="331" key="GridCell.Tab.3.left" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.3.left/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state width="1894" height="331" key="GridCell.Tab.3.right" timestamp="1587040637075">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1894" height="331" key="GridCell.Tab.3.right/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587040637075" />
+    <state x="2361" y="159" width="1037" height="734" key="SettingsEditor" timestamp="1587047881804">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2361" y="159" width="1037" height="734" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587047881804" />
+    <state x="2542" y="238" key="run.anything.popup" timestamp="1587322402947">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2542" y="238" key="run.anything.popup/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587322402947" />
+    <state x="2543" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1587118262916">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2543" y="231" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587118262916" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/discord_bot$All_Tests.info" NAME="All Tests Coverage Results" MODIFIED="1587400512407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

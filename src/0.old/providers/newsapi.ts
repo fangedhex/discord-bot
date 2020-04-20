@@ -1,6 +1,6 @@
 import moment = require("moment");
-import NewsAPI = require("newsapi");
-import { NEWSAPI_KEY } from "../env.config";
+import NewsAPI = require("src/0.old/providers/newsapi");
+import { NEWSAPI_KEY } from "../../env.config";
 import { IArticle, IProvider } from "./provider";
 
 import Debugger = require("debug");
