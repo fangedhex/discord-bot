@@ -8,4 +8,20 @@ export interface IAudio {
      * @param stream Audio to stream
      */
     stream(user: User, stream: Readable): void;
+
+    /**
+     * Pause current audio
+     */
+    pause(): void;
+
+    /**
+     * Resume last paused audio
+     */
+    resume(): void;
+
+    /**
+     * Set the audio's volume
+     * @param volume
+     */
+    setVolume(volume: number): void;
 }

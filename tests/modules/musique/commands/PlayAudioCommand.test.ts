@@ -24,3 +24,24 @@ test("should stream", () => {
 
     expect(audio.stream).toHaveBeenCalledWith(user, isA(Readable));
 })
+
+test("should say the syntax", () => {
+    const user: User = {
+        name: "test"
+    };
+    const chat = mock<IChat>();
+    const audio = mock<IAudio>();
+
+    const playAudioCommand = new PlayAudioCommand();
+    expect(playAudioCommand.getName()).toBe("yt");
+    playAudioCommand.run({
+        sender: user,
+        command: "yt",
+        args: [],
+        chat,
+        audio
+    });
+
+    expect(chat.send).toHaveBeenCalledWith("Veuillez donner une URL.");
+})
+

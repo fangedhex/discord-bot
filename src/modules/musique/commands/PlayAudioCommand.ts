@@ -8,7 +8,10 @@ export class PlayAudioCommand extends Command {
     }
 
     run(payload: ICommandPayload): void {
-        if (payload.args.length < 1) payload.chat.send("Veuillez donner une URL.");
+        if (payload.args.length < 1) {
+            payload.chat.send("Veuillez donner une URL.");
+            return;
+        }
 
         const yt = ytdl(payload.args[0], { filter: 'audioonly' });
         if (payload.audio) {

@@ -16,13 +16,16 @@ export class Discord implements IAudio {
     constructor(@inject("MessageHandler") private messageHandler: IMessageHandler) {
         this.client = new Client();
 
-        this.client.once("ready", this.onReady.bind(this));
+        this.client.on("ready", this.onReady.bind(this));
         this.client.on("message", this.onMessage.bind(this));
     }
 
     login() {
         this.client.login(DISCORD_API_KEY);
     }
+
+    private audioDispatcher?: StreamDispatcher;
+    private previousVolume: number = 1;
 
     stream(user: DiscordUser, stream: Readable): void {
         const voiceChannel = this.client.channels.cache.find((c) => {
@@ -35,34 +38,55 @@ export class Discord implements IAudio {
         if (voiceChannel && voiceChannel instanceof VoiceChannel) {
             voiceChannel.join()
                 .then((conn: VoiceConnection) => {
-                    conn.play(stream);
-                })
+                    this.audioDispatcher = conn.play(stream, {
+                        volume: this.previousVolume
+                    });
+                });
         }
+    }
+
+    pause(): void {
+        debug("Pausing audio.");
+        this.audioDispatcher?.pause();
+    }
+
+    resume(): void {
+        debug("Resuming audio.");
+        this.audioDispatcher?.resume();
+    }
+
+    setVolume(volume: number): void {
+        debug(`Setting volume to ${volume}.`);
+        this.previousVolume = volume;
+        this.audioDispatcher?.setVolume(volume);
     }
 
     private onReady() {
         if (this.client.user) {
             const status = process.env.NODE_ENV === "dev" ? "In dev mode" : "$help";
-            this.client.user.setActivity(status).then(() => {
-                debug("Activity has been set !");
-            });
+            this.client.user.setActivity(status, {type: "CUSTOM_STATUS"})
+                .then(() => {
+                    debug("Activity has been set !");
+                });
         }
     }
 
     private onMessage(message: Message) {
-        if (message.author.bot) return;
+        if (message.author.bot) {
+            return;
+        }
         debug("Received message : " + message.content);
 
         const sender: DiscordUser = {
             name: message.author.username,
             discord_id: message.author.id
-        }
+        };
 
         const chat: IChat = {
             send(reply: string, recipient?: User): void {
                 message.reply(reply);
             }
-        }
+        };
 
         this.messageHandler.parseMessage({
             sender,

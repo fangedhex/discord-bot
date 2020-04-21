@@ -5,10 +5,10 @@ module.exports = {
     setupFiles: ["./tests/setup.ts"],
     collectCoverageFrom: [
         "src/**/*.ts",
+        "!src/index.ts",
         "!src/0.old/**/*.ts",
         "!src/bridge/*.ts",
-        "!src/**/*.config.ts",
-        "!src/MusiqueModule.ts"
+        "!src/**/*.config.ts"
     ],
     coverageThreshold: {
         global: {
