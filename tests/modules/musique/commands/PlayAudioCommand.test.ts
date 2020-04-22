@@ -1,5 +1,4 @@
-import { isA, mock } from "jest-mock-extended";
-import { Readable } from "stream";
+import { anyFunction, mock } from "jest-mock-extended";
 import { IAudio } from "../../../../src/core/IAudio";
 import { IChat } from "../../../../src/core/IChat";
 import { User } from "../../../../src/metadata/User";
@@ -22,7 +21,7 @@ test("should stream", () => {
         audio
     });
 
-    expect(audio.stream).toHaveBeenCalledWith(user, isA(Readable));
+    expect(audio.stream).toHaveBeenCalledWith(user, anyFunction());
 })
 
 test("should say the syntax", () => {

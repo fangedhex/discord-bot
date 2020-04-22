@@ -1,11 +1,12 @@
 const debug = require("debug")("bot:discord-bridge");
 
+import { stringifyArguments } from "@fluffy-spoon/substitute/dist/src/Utilities";
 import { Client, Message, StreamDispatcher, VoiceChannel, VoiceConnection } from "discord.js";
 import { inject, injectable } from "inversify";
 import { Readable } from "stream";
 import { IChat } from "../core/IChat";
 import { DISCORD_API_KEY } from "../env.config";
-import { IAudio } from "../core/IAudio";
+import { IAudio, OnDemandStream } from "../core/IAudio";
 import { IMessageHandler } from "../core/MessageHandler";
 import { DiscordUser, User } from "../metadata/User";
 
@@ -24,10 +25,15 @@ export class Discord implements IAudio {
         this.client.login(DISCORD_API_KEY);
     }
 
+    private voiceConnection?: VoiceConnection;
     private audioDispatcher?: StreamDispatcher;
     private previousVolume: number = 1;
+    private playlist: OnDemandStream[] = [];
 
-    stream(user: DiscordUser, stream: Readable): void {
+    private async joinChannelOf(user: DiscordUser) {
+        // Si on a déjà une connexion, on exécute pas le reste de la fonction
+        if (this.voiceConnection) return;
+
         const voiceChannel = this.client.channels.cache.find((c) => {
             if (c instanceof VoiceChannel) {
                 return c.members.has(user.discord_id);
@@ -36,13 +42,40 @@ export class Discord implements IAudio {
             return false;
         });
         if (voiceChannel && voiceChannel instanceof VoiceChannel) {
-            voiceChannel.join()
-                .then((conn: VoiceConnection) => {
+            this.voiceConnection = await voiceChannel.join();
+                /*.then((conn: VoiceConnection) => {
                     this.audioDispatcher = conn.play(stream, {
                         volume: this.previousVolume
                     });
-                });
+                });*/
         }
+    }
+
+    private playNextTrack() {
+        // Si on est déjà en train de lire un son, on arrête là
+        if (this.audioDispatcher) return;
+
+        const streamOnDemand = this.playlist.shift();
+        if (streamOnDemand) {
+            const stream = streamOnDemand();
+            this.audioDispatcher = this.voiceConnection?.play(stream, {
+                volume: this.previousVolume
+            });
+            this.audioDispatcher?.on("finish", () => {
+                debug("Audio stream ended - playing next track if any");
+                this.audioDispatcher = undefined;
+                this.playNextTrack();
+            })
+        } else {
+            this.voiceConnection?.channel.leave();
+        }
+    }
+
+    stream(user: DiscordUser, stream: OnDemandStream): void {
+        this.playlist.push(stream);
+
+        this.joinChannelOf(user)
+            .then(this.playNextTrack.bind(this));
     }
 
     pause(): void {
@@ -59,6 +92,10 @@ export class Discord implements IAudio {
         debug(`Setting volume to ${volume}.`);
         this.previousVolume = volume;
         this.audioDispatcher?.setVolume(volume);
+    }
+
+    skip() {
+        this.audioDispatcher?.end();
     }
 
     private onReady() {

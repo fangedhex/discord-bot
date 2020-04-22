@@ -13,9 +13,10 @@ export class PlayAudioCommand extends Command {
             return;
         }
 
-        const yt = ytdl(payload.args[0], { filter: 'audioonly' });
         if (payload.audio) {
-            payload.audio.stream(payload.sender, yt);
+            payload.audio.stream(payload.sender, () => {
+                return ytdl(payload.args[0], { filter: 'audioonly' });
+            });
             payload.chat.send(`La vidéo youtube ${payload.args[0]} a été lancée.`);
         }
     }

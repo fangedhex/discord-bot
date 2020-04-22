@@ -7,4 +7,5 @@ test("should have command", () => {
     expect(musique.hasCommand("setvol")).toBeTruthy();
     expect(musique.hasCommand("pause")).toBeTruthy();
     expect(musique.hasCommand("resume")).toBeTruthy();
+    expect(musique.hasCommand("skip")).toBeTruthy();
 })

@@ -5,20 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdc69a6-da2f-4da7-94d8-aac99dada1b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/modules/musique/commands/PauseCommand.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/musique/commands/ResumeCommand.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/musique/commands/VolumeCommand.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/modules/musique/MusiqueModule.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/modules/musique/commands/PauseCommand.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/modules/musique/commands/ResumeCommand.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/modules/musique/commands/VolumeCommand.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/musique/commands/SkipCommand.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/modules/musique/commands/SkipCommand.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bridge/Discord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/Discord.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/IAudio.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/IAudio.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/musique/MusiqueModule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/MusiqueModule.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/PlayAudioCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/PlayAudioCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/core/Command.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/Command.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/modules/musique/MusiqueModule.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/modules/musique/MusiqueModule.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/modules/musique/commands/PlayAudioCommand.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/modules/musique/commands/PlayAudioCommand.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,15 +62,16 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tests/modules/musique/commands" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests/core" />
       <recent name="$PROJECT_DIR$/src/core" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/commands" />
       <recent name="$PROJECT_DIR$/src/0.old" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/modules/musique/commands" />
+      <recent name="$PROJECT_DIR$/src/modules/musique/commands" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.All Tests">
@@ -150,7 +145,8 @@
       <workItem from="1587315441007" duration="4812000" />
       <workItem from="1587378004984" duration="14910000" />
       <workItem from="1587457313046" duration="875000" />
-      <workItem from="1587473886548" duration="7591000" />
+      <workItem from="1587473886548" duration="8307000" />
+      <workItem from="1587545650429" duration="4651000" />
     </task>
     <task id="LOCAL-00001" summary="Updating dependencies">
       <created>1586880149410</created>
@@ -173,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587420957344</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Commands : pause, resume and setvol">
+      <created>1587488631594</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587488631594</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +186,8 @@
     <MESSAGE value="Updating dependencies" />
     <MESSAGE value="Using env-var instead of getenv" />
     <MESSAGE value="Basic audio stream" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic audio stream" />
+    <MESSAGE value="Commands : pause, resume and setvol" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commands : pause, resume and setvol" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2338" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587289253725">
@@ -198,26 +202,26 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2608" y="372" width="528" height="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587392112760" />
-    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2" timestamp="1587420957211">
+    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2" timestamp="1587488631498">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587420957211" />
-    <state width="1868" height="754" key="GridCell.Tab.0.bottom" timestamp="1587488495933">
+    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587488631498" />
+    <state width="1868" height="753" key="GridCell.Tab.0.bottom" timestamp="1587550258697">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1868" height="754" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587488495933" />
-    <state width="1868" height="754" key="GridCell.Tab.0.center" timestamp="1587488495933">
+    <state width="1868" height="753" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587550258697" />
+    <state width="1868" height="753" key="GridCell.Tab.0.center" timestamp="1587550258697">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1868" height="754" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587488495933" />
-    <state width="1868" height="754" key="GridCell.Tab.0.left" timestamp="1587488495933">
+    <state width="1868" height="753" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587550258697" />
+    <state width="1868" height="753" key="GridCell.Tab.0.left" timestamp="1587550258697">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1868" height="754" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587488495933" />
-    <state width="1868" height="754" key="GridCell.Tab.0.right" timestamp="1587488495933">
+    <state width="1868" height="753" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587550258697" />
+    <state width="1868" height="753" key="GridCell.Tab.0.right" timestamp="1587550258697">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1868" height="754" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587488495933" />
+    <state width="1868" height="753" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587550258697" />
     <state width="1868" height="331" key="GridCell.Tab.1.bottom" timestamp="1587486939991">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -280,6 +284,6 @@
     <state x="2543" y="231" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587118262916" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/discord_bot$All_Tests.info" NAME="All Tests Coverage Results" MODIFIED="1587488535139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/discord_bot$All_Tests.info" NAME="All Tests Coverage Results" MODIFIED="1587550256675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="JestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
