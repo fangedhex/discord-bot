@@ -3,19 +3,31 @@ image: docker:latest
 services:
   - docker:dind
 
-test:
+stages:
+  - build
+  - deploy
+
+build:
   image: node
-  stage: test
+  stage: build
   script:
     - npm install
     - npm run lint
     - npm run test:coverage
   coverage: /All\sfiles.*?\s+(\d+.\d+)/
 
-deploy:
+deploy master:
   stage: deploy
   script:
-    - docker build -t docker.sylvainviste.com/discordbot .
-    - docker push docker.sylvainviste.com/discordbot
+    - docker build -t registry/discordbot:latest .
+    - docker push registry/discordbot:latest
   only:
     - master
+
+deploy dev:
+  stage: deploy
+  script:
+    - docker build -t registry/discordbot:rc .
+    - docker push registry/discordbot:rc
+  only:
+    - dev
