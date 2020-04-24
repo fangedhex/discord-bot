@@ -1,5 +1,6 @@
 import { anyFunction, mock } from "jest-mock-extended";
-import { IAudio } from "../../../../src/core/IAudio";
+import { Readable } from "stream";
+import { IAudio, OnDemandStream } from "../../../../src/core/IAudio";
 import { IChat } from "../../../../src/core/IChat";
 import { User } from "../../../../src/metadata/User";
 import { PlayAudioCommand } from "../../../../src/modules/musique/commands/PlayAudioCommand";
@@ -10,6 +11,10 @@ test("should stream", () => {
     };
     const chat = mock<IChat>();
     const audio = mock<IAudio>();
+
+    audio.stream.mockImplementation((user: User, stream: OnDemandStream) => {
+        expect(stream()).toBeInstanceOf(Readable);
+    })
 
     const playAudioCommand = new PlayAudioCommand();
     expect(playAudioCommand.getName()).toBe("yt");
