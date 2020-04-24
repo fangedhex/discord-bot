@@ -7,9 +7,9 @@ test:
   image: node
   stage: test
   script:
-    - yarn install
-    - yarn lint
-    - yarn test:coverage
+    - npm install
+    - npm run lint
+    - npm run test:coverage
   coverage: /All\sfiles.*?\s+(\d+.\d+)/
 
 deploy:

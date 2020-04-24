@@ -28,13 +28,12 @@ export class MessageHandler implements IMessageHandler {
     }
 
     parseMessage(payload: IMessagePayload) {
-        if (!payload.message.startsWith("$")) return;
+        if (!payload.message.startsWith("$") || payload.message.length <= 1) return;
 
         const args = payload.message.slice("$".length).split(/ +/);
-        const cmd = args.shift()?.toLowerCase();
-        if (cmd) {
-            this.runCommand(payload, cmd, args);
-        }
+        // @ts-ignore
+        const cmd = args.shift().toLowerCase();
+        this.runCommand(payload, cmd, args);
     }
 
     runCommand(payload: IMessagePayload, command: string, args: string[]): void {
