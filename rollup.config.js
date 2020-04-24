@@ -6,9 +6,9 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 import pkg from "./package.json";
 
 export default {
-    input: 'src/app.ts',
+    input: 'src/index.ts',
     output: {
-        file: 'dist/app.js',
+        dir: 'dist',
         format: 'cjs'
     },
     external: [

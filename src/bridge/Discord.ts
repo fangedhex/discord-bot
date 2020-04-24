@@ -1,9 +1,7 @@
 const debug = require("debug")("bot:discord-bridge");
 
-import { stringifyArguments } from "@fluffy-spoon/substitute/dist/src/Utilities";
 import { Client, Message, StreamDispatcher, VoiceChannel, VoiceConnection } from "discord.js";
 import { inject, injectable } from "inversify";
-import { Readable } from "stream";
 import { IChat } from "../core/IChat";
 import { DISCORD_API_KEY } from "../env.config";
 import { IAudio, OnDemandStream } from "../core/IAudio";
