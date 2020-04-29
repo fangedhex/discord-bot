@@ -5,7 +5,7 @@ stages:
   - deploy
 
 build:
-  image: node
+  image: node:lts
   stage: build
   script:
     - npm install
