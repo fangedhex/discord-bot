@@ -2,7 +2,7 @@
   "name": "discord-bot",
   "version": "1.0.0",
   "description": "Discord BOT that show Steam news for games",
-  "main": "dist/app.js",
+  "main": "dist/index.js",
   "scripts": {
     "lint": "tslint -c tslint.json src/**/*.ts",
     "dev": "cross-env DEBUG=* tsnd src/index.ts",

@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdc69a6-da2f-4da7-94d8-aac99dada1b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +149,8 @@
       <workItem from="1587750882330" duration="3773000" />
       <workItem from="1588170662788" duration="772000" />
       <workItem from="1588174425928" duration="700000" />
-      <workItem from="1588175137741" duration="170000" />
+      <workItem from="1588175137741" duration="524000" />
+      <workItem from="1588184324076" duration="2168000" />
     </task>
     <task id="LOCAL-00001" summary="Updating dependencies">
       <created>1586880149410</created>
@@ -255,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587753931496</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Using node:lts for testing">
+      <created>1588175363021</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1588175363021</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +279,8 @@
     <MESSAGE value="Fixing coverage on MessageHandler.ts" />
     <MESSAGE value="Fixing last tests coverage as much as possible" />
     <MESSAGE value="Docker registry push" />
-    <option name="LAST_COMMIT_MESSAGE" value="Docker registry push" />
+    <MESSAGE value="Using node:lts for testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Using node:lts for testing" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2525" y="44" width="703" height="964" key="#Dockerfile" timestamp="1587746250202">
@@ -289,10 +299,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2608" y="372" width="528" height="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587392112760" />
-    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2" timestamp="1587753931427">
+    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2" timestamp="1588175362929">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587753931427" />
+    <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1588175362929" />
     <state width="1868" height="753" key="GridCell.Tab.0.bottom" timestamp="1587749009415">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -361,10 +371,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2361" y="159" width="1037" height="734" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587721167294" />
-    <state x="2475" y="260" width="804" height="532" key="Vcs.Push.Dialog.v2" timestamp="1588175148244">
+    <state x="2475" y="260" width="804" height="532" key="Vcs.Push.Dialog.v2" timestamp="1588175365669">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="260" width="804" height="532" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1588175148244" />
+    <state x="2475" y="260" width="804" height="532" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1588175365669" />
     <state x="2560" y="308" width="633" height="437" key="git4idea.merge.GitPullDialog" timestamp="1587744634624">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
