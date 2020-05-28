@@ -20,11 +20,3 @@ deploy master:
     - docker push registry:5000/discordbot:latest
   only:
     - master
-
-deploy dev:
-  stage: deploy
-  script:
-    - docker build -t registry:5000/discordbot:rc .
-    - docker push registry:5000/discordbot:rc
-  only:
-    - dev

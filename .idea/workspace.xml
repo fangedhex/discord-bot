@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdc69a6-da2f-4da7-94d8-aac99dada1b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -407,9 +407,10 @@
     </state>
     <state x="2361" y="159" width="1129" height="905" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590398364665" />
     <state x="2361" y="159" width="1037" height="734" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587721167294" />
-    <state x="2475" y="260" width="804" height="532" key="Vcs.Push.Dialog.v2" timestamp="1588175365669">
+    <state x="2475" y="260" width="804" height="532" key="Vcs.Push.Dialog.v2" timestamp="1590656144303">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2475" y="260" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590656144303" />
     <state x="2475" y="260" width="804" height="532" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1588175365669" />
     <state x="2560" y="308" width="633" height="437" key="git4idea.merge.GitPullDialog" timestamp="1587744634624">
       <screen x="1920" y="0" width="1920" height="1080" />
