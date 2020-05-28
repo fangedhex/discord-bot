@@ -2,7 +2,7 @@
 require("dotenv").config();
 import "@abraham/reflection";
 
-import { Discord } from "./bridge/Discord";
+import { Discord } from "./bridge/discord/Discord";
 import { container } from "./ioc.config";
 import { MessageHandler } from "./core/MessageHandler";
 

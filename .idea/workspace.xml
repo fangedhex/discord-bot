@@ -23,8 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdc69a6-da2f-4da7-94d8-aac99dada1b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.gitlab-ci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bridge/discord/Logger.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/bridge/discord/Logger.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge/Discord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/discord/Discord.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ioc.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ioc.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,16 +81,16 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/modules/musique/commands" />
+      <recent name="$PROJECT_DIR$/src/modules/musique/commands" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/bridge/discord" />
       <recent name="$PROJECT_DIR$/tests/core" />
       <recent name="$PROJECT_DIR$/src/core" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/commands" />
-      <recent name="$PROJECT_DIR$/src/0.old" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tests/modules/musique/commands" />
-      <recent name="$PROJECT_DIR$/src/modules/musique/commands" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.All Tests">
@@ -334,25 +339,25 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1588175362929" />
-    <state width="1887" height="257" key="GridCell.Tab.0.bottom" timestamp="1590400049673">
+    <state width="1887" height="257" key="GridCell.Tab.0.bottom" timestamp="1590682969213">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590400049673" />
+    <state width="1887" height="257" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590682969213" />
     <state width="1868" height="753" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.center" timestamp="1590400049672">
+    <state width="1887" height="257" key="GridCell.Tab.0.center" timestamp="1590682969213">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590400049672" />
+    <state width="1887" height="257" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590682969213" />
     <state width="1868" height="753" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.left" timestamp="1590400049672">
+    <state width="1887" height="257" key="GridCell.Tab.0.left" timestamp="1590682969213">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590400049672" />
+    <state width="1887" height="257" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590682969213" />
     <state width="1868" height="753" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.right" timestamp="1590400049673">
+    <state width="1887" height="257" key="GridCell.Tab.0.right" timestamp="1590682969213">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590400049673" />
+    <state width="1887" height="257" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590682969213" />
     <state width="1868" height="753" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
     <state width="1868" height="331" key="GridCell.Tab.1.bottom" timestamp="1587486939991">
       <screen x="1920" y="0" width="1920" height="1080" />

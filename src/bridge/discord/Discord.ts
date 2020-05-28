@@ -2,11 +2,11 @@ const debug = require("debug")("bot:discord-bridge");
 
 import { Client, Message, StreamDispatcher, VoiceChannel, VoiceConnection } from "discord.js";
 import { inject, injectable } from "inversify";
-import { IChat } from "../core/IChat";
-import { DISCORD_API_KEY } from "../env.config";
-import { IAudio, OnDemandStream } from "../core/IAudio";
-import { IMessageHandler } from "../core/MessageHandler";
-import { DiscordUser, User } from "../metadata/User";
+import { IChat } from "../../core/IChat";
+import { DISCORD_API_KEY } from "../../env.config";
+import { IAudio, OnDemandStream } from "../../core/IAudio";
+import { IMessageHandler } from "../../core/MessageHandler";
+import { DiscordUser, User } from "../../metadata/User";
 
 @injectable()
 export class Discord implements IAudio {
