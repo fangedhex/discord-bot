@@ -1,7 +1,7 @@
-import { Command } from "../../../core/Command";
+import { AbstractCommand } from "../../../core/command/AbstractCommand";
 import { ICommandPayload } from "../../../core/ICommandPayload";
 
-export class VolumeCommand extends Command {
+export class VolumeCommand extends AbstractCommand {
     constructor() {
         super("setvol");
     }

@@ -1,8 +1,8 @@
-import { Command } from "../../../core/Command";
+import { AbstractCommand } from "../../../core/command/AbstractCommand";
 import { ICommandPayload } from "../../../core/ICommandPayload";
 import ytdl = require('ytdl-core');
 
-export class PlayAudioCommand extends Command {
+export class PlayAudioCommand extends AbstractCommand {
     constructor() {
         super("yt");
     }

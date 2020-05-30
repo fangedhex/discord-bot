@@ -1,5 +1,5 @@
 import { mock } from "jest-mock-extended";
-import { Command } from "../../src/core/Command";
+import { AbstractCommand } from "../../src/core/command/AbstractCommand";
 import { IAudio } from "../../src/core/IAudio";
 import { IChat } from "../../src/core/IChat";
 import { ICommandPayload } from "../../src/core/ICommandPayload";
@@ -10,7 +10,7 @@ test("command", () => {
     // @ts-ignore
     const testModule: Module = new Module();
 
-    const cmd = mock<Command>();
+    const cmd = mock<AbstractCommand>();
     testModule.registerCommand(cmd);
     cmd.getName.mockReturnValue("test");
     expect(testModule.hasCommand("test")).toBeTruthy();

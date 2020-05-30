@@ -23,13 +23,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdc69a6-da2f-4da7-94d8-aac99dada1b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/bridge/discord/Logger.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bridge/discord/Logger.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/command/AbstractType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/command/types/NumberType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/command/types/StringType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/core/command/types/UrlType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/core/command/types/NumberType.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/core/command/types/StringType.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/core/command/types/UrlType.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bridge/Discord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/discord/Discord.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ioc.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ioc.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Command.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/command/AbstractCommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/PauseCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/PauseCommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/PlayAudioCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/PlayAudioCommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/ResumeCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/ResumeCommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/SkipCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/SkipCommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/VolumeCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/VolumeCommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/core/Command.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/command/AbstractCommand.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/core/Module.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/Module.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,16 +92,16 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tests/modules/musique/commands" />
-      <recent name="$PROJECT_DIR$/src/modules/musique/commands" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/core/command" />
+      <recent name="$PROJECT_DIR$/src/core/command" />
       <recent name="$PROJECT_DIR$/src/bridge/discord" />
       <recent name="$PROJECT_DIR$/tests/core" />
       <recent name="$PROJECT_DIR$/src/core" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/commands" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/modules/musique/commands" />
+      <recent name="$PROJECT_DIR$/src/modules/musique/commands" />
     </key>
   </component>
   <component name="RunManager" selected="Jest.All Tests">
@@ -175,6 +186,8 @@
       <workItem from="1588184324076" duration="2168000" />
       <workItem from="1590398269864" duration="1779000" />
       <workItem from="1590567882901" duration="1544000" />
+      <workItem from="1590735614225" duration="897000" />
+      <workItem from="1590834550480" duration="5747000" />
     </task>
     <task id="LOCAL-00001" summary="Updating dependencies">
       <created>1586880149410</created>
@@ -288,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588175363021</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Adding a logger for later">
+      <created>1590683165377</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1590683165377</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +336,8 @@
     <MESSAGE value="Fixing last tests coverage as much as possible" />
     <MESSAGE value="Docker registry push" />
     <MESSAGE value="Using node:lts for testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Using node:lts for testing" />
+    <MESSAGE value="Adding a logger for later" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding a logger for later" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2525" y="44" width="703" height="964" key="#Dockerfile" timestamp="1587746250202">
@@ -327,9 +348,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2338" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587752936981" />
-    <state x="2688" y="243" width="378" height="566" key="#com.intellij.ide.util.MemberChooser" timestamp="1587475152485">
+    <state x="2688" y="243" width="474" height="699" key="#com.intellij.ide.util.MemberChooser" timestamp="1590854142724">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2688" y="243" width="474" height="699" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590854142724" />
     <state x="2688" y="243" width="378" height="566" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587475152485" />
     <state x="2608" y="372" width="528" height="312" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1587392112760">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -339,25 +361,25 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1588175362929" />
-    <state width="1887" height="257" key="GridCell.Tab.0.bottom" timestamp="1590682969213">
+    <state width="1887" height="257" key="GridCell.Tab.0.bottom" timestamp="1590851718411">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590682969213" />
+    <state width="1887" height="257" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590851718411" />
     <state width="1868" height="753" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.center" timestamp="1590682969213">
+    <state width="1887" height="257" key="GridCell.Tab.0.center" timestamp="1590851718411">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590682969213" />
+    <state width="1887" height="257" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590851718411" />
     <state width="1868" height="753" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.left" timestamp="1590682969213">
+    <state width="1887" height="257" key="GridCell.Tab.0.left" timestamp="1590851718411">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590682969213" />
+    <state width="1887" height="257" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590851718411" />
     <state width="1868" height="753" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.right" timestamp="1590682969213">
+    <state width="1887" height="257" key="GridCell.Tab.0.right" timestamp="1590851718411">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590682969213" />
+    <state width="1887" height="257" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590851718411" />
     <state width="1868" height="753" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
     <state width="1868" height="331" key="GridCell.Tab.1.bottom" timestamp="1587486939991">
       <screen x="1920" y="0" width="1920" height="1080" />

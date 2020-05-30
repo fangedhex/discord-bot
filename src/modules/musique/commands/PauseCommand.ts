@@ -1,7 +1,7 @@
-import { Command } from "../../../core/Command";
+import { AbstractCommand } from "../../../core/command/AbstractCommand";
 import { ICommandPayload } from "../../../core/ICommandPayload";
 
-export class PauseCommand extends Command {
+export class PauseCommand extends AbstractCommand {
     constructor() {
         super("pause");
     }

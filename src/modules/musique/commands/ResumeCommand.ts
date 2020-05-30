@@ -1,7 +1,7 @@
-import { Command } from "../../../core/Command";
+import { AbstractCommand } from "../../../core/command/AbstractCommand";
 import { ICommandPayload } from "../../../core/ICommandPayload";
 
-export class ResumeCommand extends Command {
+export class ResumeCommand extends AbstractCommand {
     constructor() {
         super("resume");
     }

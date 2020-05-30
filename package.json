@@ -8,7 +8,8 @@
     "dev": "cross-env DEBUG=* tsnd src/index.ts",
     "build": "rollup -c",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test:dev": "jest --watch --coverage"
   },
   "keywords": [],
   "author": "Sylvain VISTE (Fanged Hex)",

@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 import { User } from "../metadata/User";
-import { Command } from "./Command";
+import { AbstractCommand } from "./command/AbstractCommand";
 import { ICommandPayload } from "./ICommandPayload";
 
 export interface IModule {
@@ -20,7 +20,7 @@ export interface IModule {
 
 @injectable()
 export class Module implements IModule {
-    private readonly commands: Command[];
+    private readonly commands: AbstractCommand[];
 
     protected constructor() {
         this.commands = [];
@@ -30,7 +30,7 @@ export class Module implements IModule {
      * Register a new command into the module
      * @param cmd Command to add
      */
-    registerCommand(cmd: Command): void {
+    registerCommand(cmd: AbstractCommand): void {
         this.commands.push(cmd);
     }
 

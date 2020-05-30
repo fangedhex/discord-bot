@@ -1,7 +1,7 @@
-import { Command } from "../../../core/Command";
+import { AbstractCommand } from "../../../core/command/AbstractCommand";
 import { ICommandPayload } from "../../../core/ICommandPayload";
 
-export class SkipCommand extends Command {
+export class SkipCommand extends AbstractCommand {
     constructor() {
         super("skip");
     }
