@@ -3,7 +3,7 @@ import { ICommandPayload } from "../../../core/ICommandPayload";
 
 export class SkipCommand extends AbstractCommand {
     constructor() {
-        super("skip");
+        super("skip", []);
     }
 
     run(payload: ICommandPayload): void {

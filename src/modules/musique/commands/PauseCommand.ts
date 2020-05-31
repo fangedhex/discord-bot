@@ -3,7 +3,7 @@ import { ICommandPayload } from "../../../core/ICommandPayload";
 
 export class PauseCommand extends AbstractCommand {
     constructor() {
-        super("pause");
+        super("pause", []);
     }
 
     run(payload: ICommandPayload): void {

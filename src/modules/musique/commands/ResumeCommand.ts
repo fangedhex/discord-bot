@@ -3,7 +3,7 @@ import { ICommandPayload } from "../../../core/ICommandPayload";
 
 export class ResumeCommand extends AbstractCommand {
     constructor() {
-        super("resume");
+        super("resume", []);
     }
 
     run(payload: ICommandPayload): void {

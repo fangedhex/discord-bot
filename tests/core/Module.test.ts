@@ -31,6 +31,7 @@ test("command", () => {
     }
 
     testModule.runCommand(payload);
+    expect(cmd.validate).toHaveBeenCalledWith(payload);
     expect(cmd.run).toHaveBeenCalledWith(payload);
 
     const payload2: ICommandPayload = {

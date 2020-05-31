@@ -1,9 +1,12 @@
 import { AbstractCommand } from "../../../core/command/AbstractCommand";
+import { NumberType } from "../../../core/command/types/NumberType";
 import { ICommandPayload } from "../../../core/ICommandPayload";
 
 export class VolumeCommand extends AbstractCommand {
     constructor() {
-        super("setvol");
+        super("setvol", [
+            NumberType
+        ]);
     }
 
     run(payload: ICommandPayload): void {

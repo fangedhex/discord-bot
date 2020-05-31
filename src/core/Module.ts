@@ -40,7 +40,10 @@ export class Module implements IModule {
 
     runCommand(payload: ICommandPayload) {
         const cmd = this.commands.find((c) => c.getName() === payload.command);
+
         if (cmd) {
+            // TODO Add a system to return the syntax if the command is incorrect
+            cmd.validate(payload);
             return cmd.run(payload);
         }
 

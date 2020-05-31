@@ -1,10 +1,13 @@
 import { AbstractCommand } from "../../../core/command/AbstractCommand";
+import { UrlType } from "../../../core/command/types/UrlType";
 import { ICommandPayload } from "../../../core/ICommandPayload";
 import ytdl = require('ytdl-core');
 
 export class PlayAudioCommand extends AbstractCommand {
     constructor() {
-        super("yt");
+        super("yt", [
+            UrlType
+        ]);
     }
 
     run(payload: ICommandPayload): void {

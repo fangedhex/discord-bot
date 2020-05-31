@@ -23,23 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cdc69a6-da2f-4da7-94d8-aac99dada1b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/core/command/AbstractType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/command/types/NumberType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/command/types/StringType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/core/command/types/UrlType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/core/command/types/NumberType.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/core/command/types/StringType.test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/core/command/types/UrlType.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Command.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/command/AbstractCommand.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/Module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/PauseCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/PauseCommand.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/PlayAudioCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/PlayAudioCommand.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/ResumeCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/ResumeCommand.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/SkipCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/SkipCommand.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/VolumeCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/VolumeCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/core/Command.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/command/AbstractCommand.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/core/Module.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/Module.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +177,8 @@
       <workItem from="1590398269864" duration="1779000" />
       <workItem from="1590567882901" duration="1544000" />
       <workItem from="1590735614225" duration="897000" />
-      <workItem from="1590834550480" duration="5747000" />
+      <workItem from="1590834550480" duration="6007000" />
+      <workItem from="1590944026871" duration="468000" />
     </task>
     <task id="LOCAL-00001" summary="Updating dependencies">
       <created>1586880149410</created>
@@ -308,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590683165377</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Better command checking for args">
+      <created>1590855696088</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1590855696088</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,7 +335,8 @@
     <MESSAGE value="Docker registry push" />
     <MESSAGE value="Using node:lts for testing" />
     <MESSAGE value="Adding a logger for later" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding a logger for later" />
+    <MESSAGE value="Better command checking for args" />
+    <option name="LAST_COMMIT_MESSAGE" value="Better command checking for args" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2525" y="44" width="703" height="964" key="#Dockerfile" timestamp="1587746250202">
@@ -361,25 +360,25 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1588175362929" />
-    <state width="1887" height="257" key="GridCell.Tab.0.bottom" timestamp="1590851718411">
+    <state width="1887" height="257" key="GridCell.Tab.0.bottom" timestamp="1590944418155">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590851718411" />
+    <state width="1887" height="257" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590944418155" />
     <state width="1868" height="753" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.center" timestamp="1590851718411">
+    <state width="1887" height="257" key="GridCell.Tab.0.center" timestamp="1590944418155">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590851718411" />
+    <state width="1887" height="257" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590944418155" />
     <state width="1868" height="753" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.left" timestamp="1590851718411">
+    <state width="1887" height="257" key="GridCell.Tab.0.left" timestamp="1590944418155">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590851718411" />
+    <state width="1887" height="257" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590944418155" />
     <state width="1868" height="753" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.right" timestamp="1590851718411">
+    <state width="1887" height="257" key="GridCell.Tab.0.right" timestamp="1590944418155">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590851718411" />
+    <state width="1887" height="257" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590944418155" />
     <state width="1868" height="753" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
     <state width="1868" height="331" key="GridCell.Tab.1.bottom" timestamp="1587486939991">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -434,10 +433,10 @@
     </state>
     <state x="2361" y="159" width="1129" height="905" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590398364665" />
     <state x="2361" y="159" width="1037" height="734" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587721167294" />
-    <state x="2475" y="260" width="804" height="532" key="Vcs.Push.Dialog.v2" timestamp="1590656144303">
+    <state x="2475" y="260" width="1006" height="662" key="Vcs.Push.Dialog.v2" timestamp="1590855705334">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="260" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590656144303" />
+    <state x="2475" y="260" width="1006" height="662" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590855705334" />
     <state x="2475" y="260" width="804" height="532" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1588175365669" />
     <state x="2560" y="308" width="633" height="437" key="git4idea.merge.GitPullDialog" timestamp="1587744634624">
       <screen x="1920" y="0" width="1920" height="1080" />
