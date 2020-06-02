@@ -6,7 +6,10 @@ import ytdl = require('ytdl-core');
 export class PlayAudioCommand extends AbstractCommand {
     constructor() {
         super("yt", [
-            UrlType
+            {
+                name: "url",
+                Type: UrlType
+            }
         ]);
     }
 

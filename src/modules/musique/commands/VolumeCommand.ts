@@ -5,7 +5,10 @@ import { ICommandPayload } from "../../../core/ICommandPayload";
 export class VolumeCommand extends AbstractCommand {
     constructor() {
         super("setvol", [
-            NumberType
+            {
+                name: "volume",
+                Type: NumberType
+            }
         ]);
     }
 

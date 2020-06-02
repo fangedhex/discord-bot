@@ -10,4 +10,8 @@ export class UrlType extends StringType {
             '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
         return pattern.test(arg);
     }
+
+    getErrorMessage(): string {
+        return "must be an url";
+    }
 }

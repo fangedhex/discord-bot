@@ -43,10 +43,16 @@ export class Module implements IModule {
 
         if (cmd) {
             // TODO Add a system to return the syntax if the command is incorrect
-            cmd.validate(payload);
-            return cmd.run(payload);
-        }
+            const errors = cmd.validate(payload);
 
-        throw new Error(`Unknown command ${payload.command}.`);
+            if (errors.length === 0) {
+                cmd.run(payload);
+            } else {
+                payload.chat.send(cmd.getSyntax());
+                errors.forEach((error) => payload.chat.send(error));
+            }
+        } else {
+            payload.chat.send(`Unknown command ${payload.command}`);
+        }
     }
 }

@@ -3,15 +3,19 @@ import { AbstractType } from "./AbstractType";
 
 export interface ICommand {
     getName: () => string;
-    run: (payload: ICommandPayload) => string | void;
+    run: (payload: ICommandPayload) => void;
 }
 
-type Args = (new() => AbstractType<any>)[];
+type TypeCtor = new() => AbstractType<any>;
+interface ArgDef {
+    name: string;
+    Type: TypeCtor;
+}
 
 export abstract class AbstractCommand implements ICommand {
     private _description?: string;
 
-    protected constructor(private _name: string, private args: Args) {}
+    protected constructor(private _name: string, private args: ArgDef[]) {}
 
     getName() {
         return this._name;
@@ -25,18 +29,28 @@ export abstract class AbstractCommand implements ICommand {
         this._description = d;
     }
 
-    validate(payload: ICommandPayload) {
-        this.args.forEach((T, index) => {
-            const t = new T();
-            const arg = payload.args[index];
-
-            // TODO Better error
-            if (!arg) throw new Error("Missing argument");
-
-            // TODO Better error
-            if (!t.validate(arg)) throw new Error("Invalid argument");
-        });
+    getSyntax(): string {
+        return this.args.reduce<string>((previousValue, currentValue) => {
+            return previousValue + ` <${currentValue.name}>`;
+        }, this._name);
     }
 
-    abstract run(payload: ICommandPayload) : string | void;
+    validate(payload: ICommandPayload) {
+        const errors: string[] = [];
+
+        this.args.forEach((argDef, key) => {
+            const t = new argDef.Type();
+            const arg = payload.args[key];
+
+            if (arg) {
+                if (!t.validate(arg)) errors.push(`${key} ${t.getErrorMessage()}`);
+            } else {
+                errors.push(`${argDef.name} ${t.getErrorMessage()}`);
+            }
+        });
+
+        return errors;
+    }
+
+    abstract run(payload: ICommandPayload): void;
 }

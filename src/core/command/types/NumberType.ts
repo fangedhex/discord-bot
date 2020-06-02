@@ -8,4 +8,8 @@ export class NumberType extends AbstractType<number> {
     convert(arg: string): number {
         return Number(arg);
     }
+
+    getErrorMessage(): string {
+        return "must be a number";
+    }
 }

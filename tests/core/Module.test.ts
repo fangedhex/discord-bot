@@ -6,14 +6,15 @@ import { ICommandPayload } from "../../src/core/ICommandPayload";
 import { IModule, Module } from "../../src/core/Module";
 import { User } from "../../src/metadata/User";
 
-test("command", () => {
-    // @ts-ignore
-    const testModule: Module = new Module();
+class DummyTestModule extends Module {
+    constructor() {
+        super();
+    }
+}
 
+describe("Module", () => {
+    const module = new DummyTestModule();
     const cmd = mock<AbstractCommand>();
-    testModule.registerCommand(cmd);
-    cmd.getName.mockReturnValue("test");
-    expect(testModule.hasCommand("test")).toBeTruthy();
 
     const user: User = {
         name: "test"
@@ -22,25 +23,42 @@ test("command", () => {
     const chat = mock<IChat>();
     const audio = mock<IAudio>();
 
-    const payload: ICommandPayload = {
-        sender: user,
-        command: "test",
-        args: [],
-        chat,
-        audio
-    }
+    it("should add our command", () => {
+        module.registerCommand(cmd);
+        cmd.getName.mockReturnValue("test");
+        expect(module.hasCommand("test")).toBeTruthy();
+    });
 
-    testModule.runCommand(payload);
-    expect(cmd.validate).toHaveBeenCalledWith(payload);
-    expect(cmd.run).toHaveBeenCalledWith(payload);
+    it("execute known and valid command", () => {
+        const payload: ICommandPayload = {
+            sender: user,
+            command: "test",
+            args: [],
+            chat,
+            audio
+        }
 
-    const payload2: ICommandPayload = {
-        sender: user,
-        command: "test2",
-        args: [],
-        chat,
-        audio
-    }
+        // Calls mocking
+        cmd.validate.calledWith(payload).mockReturnValue([]);
 
-    expect(() => testModule.runCommand(payload2)).toThrow("Unknown command test2.");
-})
+        module.runCommand(payload);
+
+        // Calls expectation
+        expect(cmd.validate).toHaveBeenCalledWith(payload);
+        expect(cmd.run).toHaveBeenCalledWith(payload);
+    });
+
+    it("detect unknown command", () => {
+        const payload2: ICommandPayload = {
+            sender: user,
+            command: "test2",
+            args: [],
+            chat,
+            audio
+        }
+
+        module.runCommand(payload2);
+
+        expect(chat.send).toHaveBeenCalledWith("Unknown command test2");
+    });
+});

@@ -7,4 +7,8 @@ describe("UrlType", () => {
       const url = "http://mynewurl.com/something.stuff";
       expect(urlType.validate(url)).toBeTruthy();
    });
+
+   it("return the correct error message", () => {
+      expect(urlType.getErrorMessage()).toBe("must be an url");
+   });
 });

@@ -11,4 +11,8 @@ export class StringType extends AbstractType<string> {
     convert(arg: string): string {
         return arg;
     }
+
+    getErrorMessage(): string {
+        return "must be a string";
+    }
 }
