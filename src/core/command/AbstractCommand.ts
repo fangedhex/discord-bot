@@ -1,4 +1,5 @@
 import { ICommandPayload } from "../ICommandPayload";
+import { COMMAND_PREFIX } from "../MessageHandler";
 import { AbstractType } from "./AbstractType";
 
 export interface ICommand {
@@ -30,9 +31,11 @@ export abstract class AbstractCommand implements ICommand {
     }
 
     getSyntax(): string {
+        const commandWithPrefix = COMMAND_PREFIX + this._name;
+
         return this.args.reduce<string>((previousValue, currentValue) => {
             return previousValue + ` <${currentValue.name}>`;
-        }, this._name);
+        }, commandWithPrefix);
     }
 
     validate(payload: ICommandPayload) {

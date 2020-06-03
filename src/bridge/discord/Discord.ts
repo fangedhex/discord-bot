@@ -1,9 +1,9 @@
 const debug = require("debug")("bot:discord-bridge");
 
-import { Client, Message, StreamDispatcher, VoiceChannel, VoiceConnection } from "discord.js";
+import { Client, DMChannel, Message, StreamDispatcher, TextChannel, VoiceChannel, VoiceConnection } from "discord.js";
 import { inject, injectable } from "inversify";
 import { IChat } from "../../core/IChat";
-import { DISCORD_API_KEY } from "../../env.config";
+import { COMMAND_PREFIX, DISCORD_API_KEY } from "../../env.config";
 import { IAudio, OnDemandStream } from "../../core/IAudio";
 import { IMessageHandler } from "../../core/MessageHandler";
 import { DiscordUser, User } from "../../metadata/User";
@@ -98,8 +98,7 @@ export class Discord implements IAudio {
 
     private onReady() {
         if (this.client.user) {
-            const status = process.env.NODE_ENV === "dev" ? "In dev mode" : "$help";
-            this.client.user.setActivity(status, {type: "CUSTOM_STATUS"})
+            this.client.user.setActivity(COMMAND_PREFIX + "help")
                 .then(() => {
                     debug("Activity has been set !");
                 });
@@ -107,10 +106,13 @@ export class Discord implements IAudio {
     }
 
     private onMessage(message: Message) {
-        if (message.author.bot) {
-            return;
+        if (message.author.bot) return;
+
+        if (message.channel instanceof TextChannel) {
+            debug("Received message from %s on %s : %s", message.author.username, message.channel.name, message.content);
+        } else if (message.channel instanceof DMChannel) {
+            debug("Received private message from %s : %s", message.author.username, message.content);
         }
-        debug("Received message : " + message.content);
 
         const sender: DiscordUser = {
             name: message.author.username,

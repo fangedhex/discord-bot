@@ -6,8 +6,7 @@ module.exports = {
     collectCoverageFrom: [
         "src/**/*.ts",
         "!src/index.ts",
-        "!src/0.old/**/*.ts",
-        "!src/bridge/*.ts",
+        "!src/bridge/**/*.ts",
         "!src/**/*.config.ts"
     ],
     coverageThreshold: {

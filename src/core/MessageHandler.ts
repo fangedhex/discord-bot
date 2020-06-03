@@ -6,6 +6,8 @@ import { ICommandPayload } from "./ICommandPayload";
 import { IMessagePayload } from "./IMessagePayload";
 import { IModule } from "./Module";
 
+export const COMMAND_PREFIX = "$";
+
 export interface IMessageHandler {
     /**
      * Parse a message into a command if
@@ -28,9 +30,9 @@ export class MessageHandler implements IMessageHandler {
     }
 
     parseMessage(payload: IMessagePayload) {
-        if (!payload.message.startsWith("$") || payload.message.length <= 1) return;
+        if (!payload.message.startsWith(COMMAND_PREFIX) || payload.message.length <= 1) return;
 
-        const args = payload.message.slice("$".length).split(/ +/);
+        const args = payload.message.slice(COMMAND_PREFIX.length).split(/ +/);
         // @ts-ignore
         const cmd = args.shift().toLowerCase();
         this.runCommand(payload, cmd, args);

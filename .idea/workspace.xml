@@ -24,18 +24,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2cdc69a6-da2f-4da7-94d8-aac99dada1b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge/discord/Discord.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge/discord/Discord.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/MessageHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/MessageHandler.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/command/AbstractCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/command/AbstractCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/command/AbstractType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/command/AbstractType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/command/types/NumberType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/command/types/NumberType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/command/types/StringType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/command/types/StringType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/command/types/UrlType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/command/types/UrlType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/PlayAudioCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/PlayAudioCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/musique/commands/VolumeCommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/musique/commands/VolumeCommand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/core/Module.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/Module.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/env.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/env.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/core/command/AbstractCommand.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/command/AbstractCommand.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/core/command/types/StringType.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/command/types/StringType.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/core/command/types/UrlType.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/core/command/types/UrlType.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +93,7 @@
       <recent name="$PROJECT_DIR$/src/modules/musique/commands" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.All Tests">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -187,7 +181,10 @@
       <workItem from="1590951391325" duration="1209000" />
       <workItem from="1590952961466" duration="551000" />
       <workItem from="1590954313249" duration="140000" />
-      <workItem from="1591084013044" duration="11868000" />
+      <workItem from="1591084013044" duration="11950000" />
+      <workItem from="1591119412393" duration="686000" />
+      <workItem from="1591173611314" duration="4293000" />
+      <workItem from="1591195471929" duration="1667000" />
     </task>
     <task id="LOCAL-00001" summary="Updating dependencies">
       <created>1586880149410</created>
@@ -322,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590945706695</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Error messages are returned to the user issuing the command">
+      <created>1591116118597</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1591116118597</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +357,8 @@
     <MESSAGE value="Adding a logger for later" />
     <MESSAGE value="Better command checking for args" />
     <MESSAGE value="Using the new validation system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Using the new validation system" />
+    <MESSAGE value="Error messages are returned to the user issuing the command" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error messages are returned to the user issuing the command" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2525" y="44" width="703" height="964" key="#Dockerfile" timestamp="1587746250202">
@@ -377,25 +382,25 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2405" y="1" width="943" height="1050" key="CommitChangelistDialog2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1588175362929" />
-    <state width="1887" height="257" key="GridCell.Tab.0.bottom" timestamp="1590954452722">
+    <state width="1887" height="257" key="GridCell.Tab.0.bottom" timestamp="1591190527680">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590954452722" />
+    <state width="1887" height="257" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1591190527680" />
     <state width="1868" height="753" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.center" timestamp="1590954452722">
+    <state width="1887" height="257" key="GridCell.Tab.0.center" timestamp="1591190527680">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590954452722" />
+    <state width="1887" height="257" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1591190527680" />
     <state width="1868" height="753" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.left" timestamp="1590954452722">
+    <state width="1887" height="257" key="GridCell.Tab.0.left" timestamp="1591190527680">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590954452722" />
+    <state width="1887" height="257" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1591190527680" />
     <state width="1868" height="753" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
-    <state width="1887" height="257" key="GridCell.Tab.0.right" timestamp="1590954452722">
+    <state width="1887" height="257" key="GridCell.Tab.0.right" timestamp="1591190527680">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1887" height="257" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590954452722" />
+    <state width="1887" height="257" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1591190527680" />
     <state width="1868" height="753" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587749009415" />
     <state width="1868" height="331" key="GridCell.Tab.1.bottom" timestamp="1587486939991">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -450,10 +455,10 @@
     </state>
     <state x="2361" y="159" width="1129" height="905" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590398364665" />
     <state x="2361" y="159" width="1037" height="734" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1587721167294" />
-    <state x="2475" y="260" width="1006" height="662" key="Vcs.Push.Dialog.v2" timestamp="1590855705334">
+    <state x="2475" y="260" width="1006" height="662" key="Vcs.Push.Dialog.v2" timestamp="1591116155503">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="260" width="1006" height="662" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1590855705334" />
+    <state x="2475" y="260" width="1006" height="662" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1043/3840.0.1920.1080@1920.0.1920.1080" timestamp="1591116155503" />
     <state x="2475" y="260" width="804" height="532" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1047/3840.0.1920.1080@1920.0.1920.1080" timestamp="1588175365669" />
     <state x="2560" y="308" width="633" height="437" key="git4idea.merge.GitPullDialog" timestamp="1587744634624">
       <screen x="1920" y="0" width="1920" height="1080" />

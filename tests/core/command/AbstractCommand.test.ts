@@ -71,6 +71,6 @@ describe("AbstractCommand", () => {
     it("return the correct syntax", () => {
         const syntax = command.getSyntax();
 
-        expect(syntax).toBe("test <arg1> <arg2>");
+        expect(syntax).toBe("$test <arg1> <arg2>");
     });
 });
