@@ -1,30 +1,24 @@
 import { injectable } from "inversify";
-import { User } from "../metadata/User";
 import { AbstractCommand } from "./command/AbstractCommand";
 import { ICommandPayload } from "./ICommandPayload";
 
-export interface IModule {
-    /**
-     * Does the command exist in that module ?
-     * @param command Name of the command
-     * @return true, if the command exist in that module
-     */
-    hasCommand(command: string): boolean;
-
-    /**
-     * Run the command
-     * @param payload
-     */
-    runCommand(payload: ICommandPayload): void;
-}
-
 @injectable()
-export class Module implements IModule {
+export abstract class Module {
     private readonly commands: AbstractCommand[];
 
     protected constructor() {
         this.commands = [];
     }
+
+    /**
+     * Called when enabling this module
+     */
+    abstract onEnable(): void;
+
+    /**
+     * Called when disabling this module
+     */
+    abstract onDisable(): void;
 
     /**
      * Register a new command into the module
@@ -34,7 +28,11 @@ export class Module implements IModule {
         this.commands.push(cmd);
     }
 
-    hasCommand(command: string) {
+    getRegisteredCommands(): AbstractCommand[] {
+        return this.commands;
+    }
+
+    /*hasCommand(command: string) {
         return this.commands.find((c) => c.getName() === command) !== undefined;
     }
 
@@ -42,7 +40,6 @@ export class Module implements IModule {
         const cmd = this.commands.find((c) => c.getName() === payload.command);
 
         if (cmd) {
-            // TODO Add a system to return the syntax if the command is incorrect
             const errors = cmd.validate(payload);
 
             if (errors.length === 0) {
@@ -54,5 +51,5 @@ export class Module implements IModule {
         } else {
             payload.chat.send(`Unknown command ${payload.command}`);
         }
-    }
+    }*/
 }
