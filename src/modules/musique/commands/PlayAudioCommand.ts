@@ -1,7 +1,7 @@
 import { AbstractCommand } from "../../../core/command/AbstractCommand";
 import { UrlType } from "../../../core/command/types/UrlType";
-import { ICommandPayload } from "../../../core/ICommandPayload";
 import ytdl = require('ytdl-core');
+import { IUser } from "../../../core/IUser";
 
 export class PlayAudioCommand extends AbstractCommand {
     constructor() {
@@ -13,17 +13,13 @@ export class PlayAudioCommand extends AbstractCommand {
         ]);
     }
 
-    run(payload: ICommandPayload): void {
-        if (payload.args.length < 1) {
-            payload.chat.send("Veuillez donner une URL.");
-            return;
-        }
-
-        if (payload.audio) {
-            payload.audio.stream(payload.sender, () => {
-                return ytdl(payload.args[0], { filter: 'audioonly' });
+    run(sender: IUser, args: {url: string}): void {
+        const audio = sender.getAudio();
+        if (audio) {
+            audio.add(() => {
+                return ytdl(args.url, { filter: 'audioonly' });
             });
-            payload.chat.send(`La vidéo youtube ${payload.args[0]} a été lancée.`);
+            sender.sendText(`La vidéo youtube ${args.url} a été lancée.`);
         }
     }
 }

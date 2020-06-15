@@ -7,13 +7,7 @@ import { NumberType } from "../../../src/core/command/types/NumberType";
 
 describe(CommandRunner, () => {
     const command = mock<AbstractCommand>();
-    const user: IUser = {
-        getName(): string {
-            return "";
-        },
-        sendText(message: string) {
-        }
-    }
+    const sender = mock<IUser>();
     const args = ["http://test.com", "0.5"];
     const commandRunner = new CommandRunner(command);
 
@@ -29,10 +23,10 @@ describe(CommandRunner, () => {
             }
         ]);
 
-        commandRunner.runCommand(user, args);
+        commandRunner.runCommand(sender, args);
 
         expect(command.getDefinition).toHaveBeenCalled();
-        expect(command.run).toHaveBeenCalledWith(user, anyObject({
+        expect(command.run).toHaveBeenCalledWith(sender, anyObject({
             url: "http://test.com",
             volume: 0.5
         }));

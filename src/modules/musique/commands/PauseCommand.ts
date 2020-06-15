@@ -1,15 +1,16 @@
 import { AbstractCommand } from "../../../core/command/AbstractCommand";
-import { ICommandPayload } from "../../../core/ICommandPayload";
+import { IUser } from "../../../core/IUser";
 
 export class PauseCommand extends AbstractCommand {
     constructor() {
         super("pause", []);
     }
 
-    run(payload: ICommandPayload): void {
-        if (payload.audio) {
-            payload.audio.pause();
-            payload.chat.send(`Audio est maintenant en pause.`);
+    run(sender: IUser): void {
+        const audio = sender.getAudio();
+        if (audio) {
+            audio.pause();
+            sender.sendText(`Audio est maintenant en pause.`);
         }
     }
 }

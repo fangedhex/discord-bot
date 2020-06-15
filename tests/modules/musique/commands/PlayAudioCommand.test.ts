@@ -1,51 +1,24 @@
-import { anyFunction, mock } from "jest-mock-extended";
+import { mock } from "jest-mock-extended";
 import { Readable } from "stream";
 import { IAudio, OnDemandStream } from "../../../../src/core/IAudio";
-import { IChat } from "../../../../src/core/IChat";
-import { User } from "../../../../src/metadata/User";
 import { PlayAudioCommand } from "../../../../src/modules/musique/commands/PlayAudioCommand";
+import { IUser } from "../../../../src/core/IUser";
 
-test("should stream", () => {
-    const user: User = {
-        name: "test"
-    };
-    const chat = mock<IChat>();
-    const audio = mock<IAudio>();
+describe(PlayAudioCommand, () => {
+    it("adds stream", () => {
+        const audio = mock<IAudio>({
+            add(stream: OnDemandStream) {
+                expect(stream()).toBeInstanceOf(Readable);
+            }
+        });
+        const sender = mock<IUser>({
+            getAudio() {
+                return audio;
+            }
+        });
 
-    audio.stream.mockImplementation((user: User, stream: OnDemandStream) => {
-        expect(stream()).toBeInstanceOf(Readable);
-    })
-
-    const playAudioCommand = new PlayAudioCommand();
-    expect(playAudioCommand.getName()).toBe("yt");
-    playAudioCommand.run({
-        sender: user,
-        command: "yt",
-        args: ["https://www.youtube.com/watch?v=-knI8FdkT4s"],
-        chat,
-        audio
+        const playAudioCommand = new PlayAudioCommand();
+        expect(playAudioCommand.getName()).toBe("yt");
+        playAudioCommand.run(sender, {url: "http://dummyurl.com"});
     });
-
-    expect(audio.stream).toHaveBeenCalledWith(user, anyFunction());
-})
-
-test("should say the syntax", () => {
-    const user: User = {
-        name: "test"
-    };
-    const chat = mock<IChat>();
-    const audio = mock<IAudio>();
-
-    const playAudioCommand = new PlayAudioCommand();
-    expect(playAudioCommand.getName()).toBe("yt");
-    playAudioCommand.run({
-        sender: user,
-        command: "yt",
-        args: [],
-        chat,
-        audio
-    });
-
-    expect(chat.send).toHaveBeenCalledWith("Veuillez donner une URL.");
-})
-
+});

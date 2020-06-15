@@ -1,5 +1,4 @@
 import { Readable } from "stream";
-import { User } from "../metadata/User";
 
 export type OnDemandStream = () => Readable;
 
@@ -9,7 +8,7 @@ export interface IAudio {
      * @param user User that want the audio stream
      * @param stream Audio to stream
      */
-    stream(user: User, stream: OnDemandStream): void;
+    add(stream: OnDemandStream): void;
 
     /**
      * Pause current audio

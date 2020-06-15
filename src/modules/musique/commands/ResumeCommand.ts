@@ -1,15 +1,16 @@
 import { AbstractCommand } from "../../../core/command/AbstractCommand";
-import { ICommandPayload } from "../../../core/ICommandPayload";
+import { IUser } from "../../../core/IUser";
 
 export class ResumeCommand extends AbstractCommand {
     constructor() {
         super("resume", []);
     }
 
-    run(payload: ICommandPayload): void {
-        if (payload.audio) {
-            payload.audio.resume();
-            payload.chat.send(`Audio est maintenant en lecture.`);
+    run(sender: IUser): void {
+        const audio = sender.getAudio();
+        if (audio) {
+            audio.resume();
+            sender.sendText(`Audio est maintenant en lecture.`);
         }
     }
 }

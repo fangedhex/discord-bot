@@ -1,34 +1,51 @@
-const debug = require("debug")("bot:discord-bridge");
-
-import { Client, DMChannel, Message, StreamDispatcher, TextChannel, VoiceChannel, VoiceConnection } from "discord.js";
+import { EventBus } from "@fangedhex/eventbus";
+import {
+    Client,
+    DMChannel,
+    Message as DiscordMessage,
+    Presence as DiscordPresence,
+    StreamDispatcher,
+    TextChannel,
+    VoiceChannel,
+    VoiceConnection
+} from "discord.js";
 import { inject, injectable } from "inversify";
-import { IChat } from "../../core/IChat";
-import { COMMAND_PREFIX, DISCORD_API_KEY } from "../../env.config";
+import { DISCORD_API_KEY } from "../../env.config";
 import { IAudio, OnDemandStream } from "../../core/IAudio";
-import { IMessageHandler } from "../../core/MessageHandler";
-import { DiscordUser, User } from "../../metadata/User";
+import { MessageEvent } from "../../core/events/MessageEvent";
+import { User } from "./User";
+import { Message } from "./Message";
+import { UserPresenceUpdateEvent } from "../../core/events/UserPresenceUpdateEvent";
+
+const debug = require("debug")("bot:discord-bridge");
+const COMMAND_PREFIX = "$";
 
 @injectable()
 export class Discord implements IAudio {
     private readonly client: Client;
 
-    constructor(@inject("MessageHandler") private messageHandler: IMessageHandler) {
+    constructor(@inject(EventBus) private eventBus: EventBus) {
         this.client = new Client();
 
         this.client.on("ready", this.onReady.bind(this));
         this.client.on("message", this.onMessage.bind(this));
+        this.client.on("presenceUpdate", this.onPresenceUpdate.bind(this));
     }
 
     login() {
         this.client.login(DISCORD_API_KEY);
     }
 
+    /*
+        AUDIO PART
+     */
+
     private voiceConnection?: VoiceConnection;
     private audioDispatcher?: StreamDispatcher;
     private previousVolume: number = 1;
     private playlist: OnDemandStream[] = [];
 
-    private async joinChannelOf(user: DiscordUser) {
+    private async joinChannelOf(user: any) {
         // Si on a déjà une connexion, on exécute pas le reste de la fonction
         if (this.voiceConnection) return;
 
@@ -69,7 +86,10 @@ export class Discord implements IAudio {
         }
     }
 
-    stream(user: DiscordUser, stream: OnDemandStream): void {
+    add(stream: OnDemandStream) {
+    }
+
+    stream(user: any, stream: OnDemandStream): void {
         this.playlist.push(stream);
 
         this.joinChannelOf(user)
@@ -105,31 +125,31 @@ export class Discord implements IAudio {
         }
     }
 
-    private onMessage(message: Message) {
-        if (message.author.bot) return;
+    /*
+        TEXT PART
+     */
 
-        if (message.channel instanceof TextChannel) {
-            debug("Received message from %s on %s : %s", message.author.username, message.channel.name, message.content);
-        } else if (message.channel instanceof DMChannel) {
-            debug("Received private message from %s : %s", message.author.username, message.content);
+    private onMessage(discordMessage: DiscordMessage) {
+        if (discordMessage.author.bot) return;
+
+        if (discordMessage.channel instanceof TextChannel) {
+            debug("Received message from %s on %s : %s", discordMessage.author.username, discordMessage.channel.name, discordMessage.content);
+        } else if (discordMessage.channel instanceof DMChannel) {
+            debug("Received private message from %s : %s", discordMessage.author.username, discordMessage.content);
         }
 
-        const sender: DiscordUser = {
-            name: message.author.username,
-            discord_id: message.author.id
-        };
+        const user = new User(discordMessage.author, this);
+        const message = new Message(discordMessage);
 
-        const chat: IChat = {
-            send(reply: string, recipient?: User): void {
-                message.reply(reply);
-            }
-        };
+        // TODO Factory ?
+        this.eventBus.dispatch(new MessageEvent(user, message));
+    }
 
-        this.messageHandler.parseMessage({
-            sender,
-            message: message.content,
-            chat,
-            audio: this
-        });
+    private onPresenceUpdate(oldPresence: DiscordPresence | undefined, newPresence: DiscordPresence) {
+        if (!newPresence.user) return;
+
+        // TODO Factory ?
+        const user = new User(newPresence.user, this);
+        this.eventBus.dispatch(new UserPresenceUpdateEvent(user, newPresence, oldPresence));
     }
 }

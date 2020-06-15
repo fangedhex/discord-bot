@@ -1,15 +1,16 @@
 import { AbstractCommand } from "../../../core/command/AbstractCommand";
-import { ICommandPayload } from "../../../core/ICommandPayload";
+import { IUser } from "../../../core/IUser";
 
 export class SkipCommand extends AbstractCommand {
     constructor() {
         super("skip", []);
     }
 
-    run(payload: ICommandPayload): void {
-        if (payload.audio) {
-            payload.audio.skip();
-            payload.chat.send(`Passage au morceau suivant ...`);
+    run(sender: IUser): void {
+        const audio = sender.getAudio();
+        if (audio) {
+            audio.skip();
+            sender.sendText(`Passage au morceau suivant ...`);
         }
     }
 }

@@ -1,33 +1,23 @@
-import { ICommandPayload } from "../ICommandPayload";
-import { COMMAND_PREFIX } from "../MessageHandler";
 import { AbstractType } from "./AbstractType";
+import { IUser } from "../IUser";
 
-export interface ICommand {
-    getName: () => string;
-    run: (payload: ICommandPayload) => void;
-}
+const COMMAND_PREFIX = "$";
 
 type TypeCtor = new() => AbstractType<any>;
-interface ArgDef {
+export interface ArgDef {
     name: string;
     Type: TypeCtor;
 }
 
-export abstract class AbstractCommand implements ICommand {
-    private _description?: string;
-
+export abstract class AbstractCommand {
     protected constructor(private _name: string, private args: ArgDef[]) {}
 
     getName() {
         return this._name;
     }
 
-    getDescription() {
-        return this._description;
-    }
-
-    setDescription(d: string) {
-        this._description = d;
+    getDefinition() {
+        return this.args;
     }
 
     getSyntax(): string {
@@ -38,22 +28,5 @@ export abstract class AbstractCommand implements ICommand {
         }, commandWithPrefix);
     }
 
-    validate(payload: ICommandPayload) {
-        const errors: string[] = [];
-
-        this.args.forEach((argDef, key) => {
-            const t = new argDef.Type();
-            const arg = payload.args[key];
-
-            if (arg) {
-                if (!t.validate(arg)) errors.push(`${key} ${t.getErrorMessage()}`);
-            } else {
-                errors.push(`${argDef.name} ${t.getErrorMessage()}`);
-            }
-        });
-
-        return errors;
-    }
-
-    abstract run(payload: ICommandPayload): void;
+    abstract run(sender: IUser, args?: object): void;
 }

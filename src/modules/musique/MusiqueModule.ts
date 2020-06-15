@@ -8,13 +8,14 @@ import { VolumeCommand } from "./commands/VolumeCommand";
 
 @injectable()
 export class Musique extends Module {
-    constructor() {
-        super();
+    onEnable() {
+        this.getCommandManager().registerCommand(new PlayAudioCommand());
+        this.getCommandManager().registerCommand(new VolumeCommand());
+        this.getCommandManager().registerCommand(new PauseCommand());
+        this.getCommandManager().registerCommand(new ResumeCommand());
+        this.getCommandManager().registerCommand(new SkipCommand());
+    }
 
-        this.registerCommand(new PlayAudioCommand());
-        this.registerCommand(new VolumeCommand());
-        this.registerCommand(new PauseCommand());
-        this.registerCommand(new ResumeCommand());
-        this.registerCommand(new SkipCommand());
+    onDisable() {
     }
 }
