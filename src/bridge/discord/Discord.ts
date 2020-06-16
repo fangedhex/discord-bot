@@ -139,7 +139,7 @@ export class Discord implements IAudio {
         }
 
         const user = new User(discordMessage.author, this);
-        const message = new Message(discordMessage);
+        const message = new Message(discordMessage, user);
 
         // TODO Factory ?
         this.eventBus.dispatch(new MessageEvent(user, message));

@@ -4,7 +4,7 @@ import { User } from "./User";
 import { IUser } from "../../core/IUser";
 
 export class Message implements IMessage {
-    constructor(private discordMessage: DiscordMessage) {
+    constructor(private discordMessage: DiscordMessage, private sender: IUser) {
     }
 
     getContent(): string {
@@ -12,8 +12,7 @@ export class Message implements IMessage {
     }
 
     getSender(): IUser {
-        // TODO Factory ?
-        return new User(this.discordMessage.author);
+        return this.sender;
     }
 
     reply(message: string): void {
