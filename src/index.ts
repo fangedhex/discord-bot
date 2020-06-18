@@ -1,12 +1,10 @@
 // Loading .env
-require("dotenv").config();
-import "@abraham/reflection";
+import * as dotenv from "dotenv";
+dotenv.config();
 
-import { Discord } from "./bridge/discord/Discord";
-import { container } from "./ioc.config";
-import { CommandManager } from "./core/CommandManager";
+import "reflect-metadata";
 
-const discord = container.get<Discord>("DiscordBridge");
-const messageHandler = container.get<CommandManager>("MessageHandler");
+import { Application } from "./Application";
 
-discord.login();
+const app = new Application();
+app.run();

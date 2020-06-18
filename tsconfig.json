@@ -6,6 +6,7 @@
   "compilerOptions": {
     "strict": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "outDir": "dist",
     "sourceMap": true,
     "target": "es6",

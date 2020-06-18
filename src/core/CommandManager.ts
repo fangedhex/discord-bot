@@ -1,18 +1,17 @@
-import { inject, injectable } from "inversify";
 import { EventBus, EventHandler, Listener } from "@fangedhex/eventbus";
 import { MessageEvent } from "./events/MessageEvent";
 import { AbstractCommand } from "./command/AbstractCommand";
-import { CommandRunner } from "./command/CommandRunner";
+import { CommandRunnerFactory } from "../factories/CommandRunnerFactory";
 
+const debug = require("debug")("bot:command-manager");
 const COMMAND_PREFIX = "$";
 
-@injectable()
 export class CommandManager extends Listener {
     private commands: AbstractCommand[] = [];
 
     constructor(
-        @inject(EventBus) eventBus: EventBus,
-        @inject("Factory<CommandRunner>") private commandRunnerFactory: (command: AbstractCommand) => CommandRunner
+        eventBus: EventBus,
+        private commandRunnerFactory: CommandRunnerFactory
     ) {
         super();
         eventBus.registerListener(this);
@@ -23,6 +22,7 @@ export class CommandManager extends Listener {
      * @param command
      */
     registerCommand(command: AbstractCommand) {
+        debug("Registering command %s", command.getName());
         this.commands.push(command);
     }
 
@@ -43,8 +43,16 @@ export class CommandManager extends Listener {
         const command = this.commands.find((c) => c.getName() === cmd);
 
         if (command) {
-            const commandRunner = this.commandRunnerFactory(command);
-            commandRunner.runCommand(ev.sender, args);
+            debug("Running command %s with %o", cmd, args);
+            const commandRunner = this.commandRunnerFactory.create(command);
+
+            try {
+                commandRunner.runCommand(ev.sender, args);
+            } catch (err) {
+                if (err instanceof Error) {
+                    ev.sender.sendText(err.toString());
+                }
+            }
         }
     }
 }

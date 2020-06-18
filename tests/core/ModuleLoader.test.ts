@@ -10,9 +10,4 @@ describe(ModuleLoader, () => {
         moduleLoader.enableAllModules();
         expect(module.onEnable).toHaveBeenCalled();
     });
-
-    it("disables our module", () => {
-        moduleLoader.disableAllModules();
-        expect(module.onDisable).toHaveBeenCalled();
-    });
 });

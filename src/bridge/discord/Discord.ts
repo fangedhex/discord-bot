@@ -9,7 +9,6 @@ import {
     VoiceChannel,
     VoiceConnection
 } from "discord.js";
-import { inject, injectable } from "inversify";
 import { DISCORD_API_KEY } from "../../env.config";
 import { IAudio, OnDemandStream } from "../../core/IAudio";
 import { MessageEvent } from "../../core/events/MessageEvent";
@@ -20,11 +19,10 @@ import { UserPresenceUpdateEvent } from "../../core/events/UserPresenceUpdateEve
 const debug = require("debug")("bot:discord-bridge");
 const COMMAND_PREFIX = "$";
 
-@injectable()
 export class Discord implements IAudio {
     private readonly client: Client;
 
-    constructor(@inject(EventBus) private eventBus: EventBus) {
+    constructor(private eventBus: EventBus) {
         this.client = new Client();
 
         this.client.on("ready", this.onReady.bind(this));
