@@ -4,23 +4,22 @@ import {
     DMChannel,
     Message as DiscordMessage,
     Presence as DiscordPresence,
-    StreamDispatcher,
     TextChannel,
-    VoiceChannel,
-    VoiceConnection
+    User as DiscordUser, VoiceChannel
 } from "discord.js";
 import { DISCORD_API_KEY } from "../../env.config";
-import { IAudio, OnDemandStream } from "../../core/IAudio";
 import { MessageEvent } from "../../core/events/MessageEvent";
 import { User } from "./User";
 import { Message } from "./Message";
 import { UserPresenceUpdateEvent } from "../../core/events/UserPresenceUpdateEvent";
+import { Audio } from "./Audio";
 
 const debug = require("debug")("bot:discord-bridge");
 const COMMAND_PREFIX = "$";
 
-export class Discord implements IAudio {
+export class Discord {
     private readonly client: Client;
+    private audio?: Audio;
 
     constructor(private eventBus: EventBus) {
         this.client = new Client();
@@ -34,86 +33,6 @@ export class Discord implements IAudio {
         this.client.login(DISCORD_API_KEY);
     }
 
-    /*
-        AUDIO PART
-     */
-
-    private voiceConnection?: VoiceConnection;
-    private audioDispatcher?: StreamDispatcher;
-    private previousVolume: number = 1;
-    private playlist: OnDemandStream[] = [];
-
-    private async joinChannelOf(user: any) {
-        // Si on a déjà une connexion, on exécute pas le reste de la fonction
-        if (this.voiceConnection) return;
-
-        const voiceChannel = this.client.channels.cache.find((c) => {
-            if (c instanceof VoiceChannel) {
-                return c.members.has(user.discord_id);
-            }
-
-            return false;
-        });
-        if (voiceChannel && voiceChannel instanceof VoiceChannel) {
-            this.voiceConnection = await voiceChannel.join();
-                /*.then((conn: VoiceConnection) => {
-                    this.audioDispatcher = conn.play(stream, {
-                        volume: this.previousVolume
-                    });
-                });*/
-        }
-    }
-
-    private playNextTrack() {
-        // Si on est déjà en train de lire un son, on arrête là
-        if (this.audioDispatcher) return;
-
-        const streamOnDemand = this.playlist.shift();
-        if (streamOnDemand) {
-            const stream = streamOnDemand();
-            this.audioDispatcher = this.voiceConnection?.play(stream, {
-                volume: this.previousVolume
-            });
-            this.audioDispatcher?.on("finish", () => {
-                debug("Audio stream ended - playing next track if any");
-                this.audioDispatcher = undefined;
-                this.playNextTrack();
-            })
-        } else {
-            this.voiceConnection?.channel.leave();
-        }
-    }
-
-    add(stream: OnDemandStream) {
-    }
-
-    stream(user: any, stream: OnDemandStream): void {
-        this.playlist.push(stream);
-
-        this.joinChannelOf(user)
-            .then(this.playNextTrack.bind(this));
-    }
-
-    pause(): void {
-        debug("Pausing audio.");
-        this.audioDispatcher?.pause();
-    }
-
-    resume(): void {
-        debug("Resuming audio.");
-        this.audioDispatcher?.resume();
-    }
-
-    setVolume(volume: number): void {
-        debug(`Setting volume to ${volume}.`);
-        this.previousVolume = volume;
-        this.audioDispatcher?.setVolume(volume);
-    }
-
-    skip() {
-        this.audioDispatcher?.end();
-    }
-
     private onReady() {
         if (this.client.user) {
             this.client.user.setActivity(COMMAND_PREFIX + "help")
@@ -123,9 +42,29 @@ export class Discord implements IAudio {
         }
     }
 
-    /*
-        TEXT PART
-     */
+    private async getAudio(user: DiscordUser) {
+        if (!this.audio) {
+            const voiceChannel = this.client.channels.cache.find((c) => {
+                if (c instanceof VoiceChannel) {
+                    return c.members.has(user.id);
+                }
+
+                return false;
+            });
+            if (voiceChannel && voiceChannel instanceof VoiceChannel) {
+                const conn = await voiceChannel.join();
+
+                // TODO Factory ?
+                this.audio = new Audio(this, conn);
+            }
+        }
+
+        return this.audio;
+    }
+
+    finishAudio() {
+        this.audio = undefined;
+    }
 
     private onMessage(discordMessage: DiscordMessage) {
         if (discordMessage.author.bot) return;
@@ -136,18 +75,39 @@ export class Discord implements IAudio {
             debug("Received private message from %s : %s", discordMessage.author.username, discordMessage.content);
         }
 
-        const user = new User(discordMessage.author, this);
-        const message = new Message(discordMessage, user);
+        this.getAudio(discordMessage.author)
+            .then((audio) => {
+                if (audio) {
+                    const user = new User(discordMessage.author, audio);
+                    const message = new Message(discordMessage, user);
 
-        // TODO Factory ?
-        this.eventBus.dispatch(new MessageEvent(user, message));
+                    // TODO Factory ?
+                    this.eventBus.dispatch(new MessageEvent(user, message));
+                } else {
+                    return Promise.reject("Audio is not working.");
+                }
+            })
+            .catch((err) => {
+                discordMessage.reply(err);
+            });
     }
 
     private onPresenceUpdate(oldPresence: DiscordPresence | undefined, newPresence: DiscordPresence) {
-        if (!newPresence.user) return;
+        if (newPresence.user === null) return;
 
-        // TODO Factory ?
-        const user = new User(newPresence.user, this);
-        this.eventBus.dispatch(new UserPresenceUpdateEvent(user, newPresence, oldPresence));
+        const discordUser: DiscordUser = newPresence.user;
+
+        this.getAudio(discordUser)
+            .then((audio) => {
+                if (audio) {
+                    const user = new User(discordUser, audio);
+
+                    // TODO Factory ?
+                    this.eventBus.dispatch(new UserPresenceUpdateEvent(user, newPresence, oldPresence));
+                } else {
+                    return Promise.reject("Audio is not working.");
+                }
+            })
+            .catch(debug);
     }
 }
