@@ -2,7 +2,7 @@ module.exports = {
     verbose: true,
     preset: 'ts-jest',
     testEnvironment: 'node',
-    setupFiles: ["./tests/setup.ts"],
+    setupFiles: ["./test/setup.ts"],
     collectCoverageFrom: [
         "src/**/*.ts",
         "!src/index.ts",
