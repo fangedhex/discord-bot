@@ -9,8 +9,8 @@ export class User {
   @Column({
     nullable: true,
   })
-  discord_id?: string;
+  discordId?: string;
 
-  @ManyToMany((type) => Group, (group) => group.users)
-  groups?: Array<Group>;
+  @ManyToMany(() => Group, (group) => group.users)
+  groups?: Promise<Group[]>;
 }

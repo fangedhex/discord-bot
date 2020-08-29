@@ -1,22 +1,21 @@
 import { Message } from "discord.js";
 
 export interface TextBasedChannel {
-    send(message: string): Promise<Message>;
+  send(message: string): Promise<Message>;
 }
 
 export class Logger {
-    constructor(private channel: TextBasedChannel) {
-    }
+  constructor(private channel: TextBasedChannel) {}
 
-    info(message: string) {
-        this.channel.send(":information_source: " + message);
-    }
+  info(message: string): void {
+    this.channel.send(":information_source: " + message);
+  }
 
-    success(message: string) {
-        this.channel.send(":white_check_mark: " + message);
-    }
+  success(message: string): void {
+    this.channel.send(":white_check_mark: " + message);
+  }
 
-    error(message: string) {
-        this.channel.send(":x: " + message);
-    }
+  error(message: string): void {
+    this.channel.send(":x: " + message);
+  }
 }

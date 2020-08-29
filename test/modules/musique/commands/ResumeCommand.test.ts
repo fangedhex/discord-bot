@@ -4,16 +4,18 @@ import { ResumeCommand } from "../../../../src/modules/musique/commands/ResumeCo
 import { IUser } from "../../../../src/core/IUser";
 
 test("should resume the audio", () => {
-    const audio = mock<IAudio>();
-    const sender = mock<IUser>({
-        getAudio() {
-            return audio;
-        }
-    });
+  const audio = mock<IAudio>();
+  const sender = mock<IUser>({
+    getAudio() {
+      return audio;
+    },
+  });
 
-    const resumeCommand = new ResumeCommand();
-    resumeCommand.run(sender);
+  const resumeCommand = new ResumeCommand();
+  resumeCommand.run(sender);
 
-    expect(audio.resume).toHaveBeenCalled();
-    expect(sender.sendText).toHaveBeenCalledWith(`Audio est maintenant en lecture.`);
-})
+  expect(audio.resume).toHaveBeenCalled();
+  expect(sender.sendText).toHaveBeenCalledWith(
+    `Audio est maintenant en lecture.`
+  );
+});

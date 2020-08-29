@@ -14,6 +14,7 @@ describe(Audio, () => {
     const stream = mock<Readable>();
     const onDemandStream = jest.fn().mockReturnValue(stream);
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     voiceConnection.play.mockReturnValue(streamDispatcher);
 

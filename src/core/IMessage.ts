@@ -5,8 +5,8 @@ import { IUser } from "./IUser";
  * Its implementation is made by the bridges
  */
 export interface IMessage {
-    getSender(): IUser;
-    getContent(): string;
+  getSender(): IUser;
+  getContent(): string;
 
-    reply(message: string): void;
+  reply(message: string): void;
 }

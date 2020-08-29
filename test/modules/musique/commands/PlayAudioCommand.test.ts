@@ -5,20 +5,20 @@ import { PlayAudioCommand } from "../../../../src/modules/musique/commands/PlayA
 import { IUser } from "../../../../src/core/IUser";
 
 describe(PlayAudioCommand, () => {
-    it("adds stream", () => {
-        const audio = mock<IAudio>({
-            add(stream: OnDemandStream) {
-                expect(stream()).toBeInstanceOf(Readable);
-            }
-        });
-        const sender = mock<IUser>({
-            getAudio() {
-                return audio;
-            }
-        });
-
-        const playAudioCommand = new PlayAudioCommand();
-        expect(playAudioCommand.getName()).toBe("yt");
-        playAudioCommand.run(sender, {url: "http://dummyurl.com"});
+  it("adds stream", () => {
+    const audio = mock<IAudio>({
+      add(stream: OnDemandStream) {
+        expect(stream()).toBeInstanceOf(Readable);
+      },
     });
+    const sender = mock<IUser>({
+      getAudio() {
+        return audio;
+      },
+    });
+
+    const playAudioCommand = new PlayAudioCommand();
+    expect(playAudioCommand.getName()).toBe("yt");
+    playAudioCommand.run(sender, { url: "http://dummyurl.com" });
+  });
 });

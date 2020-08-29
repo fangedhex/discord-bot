@@ -1,12 +1,11 @@
 import { Module } from "./Module";
 
 export class ModuleLoader {
-    constructor(private modules: Module[]) {
-    }
+  constructor(private modules: Module[]) {}
 
-    enableAllModules() {
-        this.modules.forEach((module) => {
-            module.onEnable();
-        });
-    }
+  enableAllModules(): void {
+    this.modules.forEach((module) => {
+      module.onEnable();
+    });
+  }
 }

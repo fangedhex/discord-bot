@@ -6,9 +6,9 @@ export class Group {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column({ nullable: false })
   name!: string;
 
-  @ManyToMany((type) => User, (user) => user.groups)
-  users?: Array<User>;
+  @ManyToMany(() => User, (user) => user.groups)
+  users?: Promise<User[]>;
 }

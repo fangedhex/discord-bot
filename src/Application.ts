@@ -6,24 +6,25 @@ import { ModuleLoader } from "./core/ModuleLoader";
 import { Musique } from "./modules/musique/MusiqueModule";
 
 export class Application {
-    private readonly eventBus: EventBus;
-    private readonly discordBridge: Discord;
-    private readonly commandManager: CommandManager;
-    private readonly moduleLoader: ModuleLoader;
+  private readonly eventBus: EventBus;
+  private readonly discordBridge: Discord;
+  private readonly commandManager: CommandManager;
+  private readonly moduleLoader: ModuleLoader;
 
-    constructor() {
-        const commandRunnerFactory = new CommandRunnerFactory();
+  constructor() {
+    const commandRunnerFactory = new CommandRunnerFactory();
 
-        this.eventBus = new EventBus();
-        this.commandManager = new CommandManager(this.eventBus, commandRunnerFactory);
-        this.discordBridge = new Discord(this.eventBus);
-        this.moduleLoader = new ModuleLoader([
-            new Musique(this.commandManager),
-        ]);
-    }
+    this.eventBus = new EventBus();
+    this.commandManager = new CommandManager(
+      this.eventBus,
+      commandRunnerFactory
+    );
+    this.discordBridge = new Discord(this.eventBus);
+    this.moduleLoader = new ModuleLoader([new Musique(this.commandManager)]);
+  }
 
-    run() {
-        this.moduleLoader.enableAllModules();
-        this.discordBridge.login();
-    }
+  run(): void {
+    this.moduleLoader.enableAllModules();
+    this.discordBridge.login();
+  }
 }
