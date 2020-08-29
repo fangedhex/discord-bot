@@ -9,6 +9,9 @@ export class Group {
   @Column({ nullable: false })
   name!: string;
 
+  @Column({ default: false })
+  isTag!: boolean;
+
   @ManyToMany(() => User, (user) => user.groups)
   users?: Promise<User[]>;
 }

@@ -6,9 +6,7 @@ export class User {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column({
-    nullable: true,
-  })
+  @Column()
   discordId?: string;
 
   @ManyToMany(() => Group, (group) => group.users)
